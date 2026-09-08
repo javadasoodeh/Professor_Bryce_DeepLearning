@@ -1,0 +1,23 @@
+<svg viewBox="0 0 540 240" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:540px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .gd-lbl { font-family: system-ui, sans-serif; font-size: 12px; font-weight: bold; fill: #0f172a; }
+    .gd-sub { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+  </style>
+  <text x="270" y="25" text-anchor="middle" class="gd-lbl" style="font-size:14px;">Minimizing Loss F via Gradient Descent</text>
+  <!-- Bowl Curve -->
+  <path d="M 80 60 Q 270 240 460 60" fill="none" stroke="#0f172a" stroke-width="2.5" />
+  <!-- Descent Steps on right side -->
+  <circle cx="430" cy="85" r="4.5" fill="#10b981" />
+  <path d="M 430 85 L 390 125" stroke="#10b981" stroke-width="2" stroke-dasharray="3 2" />
+  <circle cx="390" cy="125" r="4.5" fill="#10b981" />
+  <path d="M 390 125 L 340 155" stroke="#10b981" stroke-width="2" stroke-dasharray="3 2" />
+  <circle cx="340" cy="155" r="4.5" fill="#10b981" />
+  <path d="M 340 155 L 290 170" stroke="#10b981" stroke-width="2" stroke-dasharray="3 2" />
+  <circle cx="290" cy="170" r="4.5" fill="#10b981" />
+  <circle cx="270" cy="172" r="6" fill="#059669" />
+  <text x="270" y="200" text-anchor="middle" class="gd-lbl" fill="#059669">Minimum Loss (Optimal Parameters)</text>
+  <!-- Gradient Vector Annotation -->
+  <line x1="430" y1="85" x2="475" y2="50" stroke="#dc2626" stroke-width="2" />
+  <text x="480" y="45" class="gd-lbl" fill="#dc2626">∇F (Steepest Ascent)</text>
+  <text x="385" y="95" class="gd-lbl" fill="#059669">-∇F (Descent Steps)</text>
+</svg>

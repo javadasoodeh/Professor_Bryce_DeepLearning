@@ -1,0 +1,89 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .net-lbl { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #0f172a; }
+    .node-text { font-family: system-ui, sans-serif; font-size: 11px; fill: #334155; }
+    .math-text { font-family: "DejaVu Serif", "Times New Roman", serif; font-style: italic; font-weight: bold; }
+  </style>
+  
+  <!-- Left Side: Macro Multi-layer Network -->
+  <g transform="translate(30, 20)">
+    <text x="110" y="15" text-anchor="middle" class="net-lbl">Full Neural Network</text>
+    <!-- Connections Layer 1 to Layer 2 -->
+    <g stroke="#cbd5e1" stroke-width="1.2">
+      <line x1="30" y1="50" x2="105" y2="40"/><line x1="30" y1="50" x2="105" y2="85"/><line x1="30" y1="50" x2="105" y2="130"/><line x1="30" y1="50" x2="105" y2="175"/>
+      <line x1="30" y1="100" x2="105" y2="40"/><line x1="30" y1="100" x2="105" y2="85"/><line x1="30" y1="100" x2="105" y2="130"/><line x1="30" y1="100" x2="105" y2="175"/>
+      <line x1="30" y1="150" x2="105" y2="40"/><line x1="30" y1="150" x2="105" y2="85"/><line x1="30" y1="150" x2="105" y2="130"/><line x1="30" y1="150" x2="105" y2="175"/>
+      <!-- Layer 2 to Layer 3 (Hidden to Output) -->
+      <line x1="105" y1="40" x2="180" y2="70"/><line x1="105" y1="40" x2="180" y2="130"/>
+      <line x1="105" y1="85" x2="180" y2="70"/><line x1="105" y1="85" x2="180" y2="130"/>
+      <line x1="105" y1="130" x2="180" y2="70"/><line x1="105" y1="130" x2="180" y2="130"/>
+      <line x1="105" y1="175" x2="180" y2="70"/><line x1="105" y1="175" x2="180" y2="130"/>
+    </g>
+    <!-- Nodes Layer 1 (Inputs) -->
+    <circle cx="30" cy="50" r="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <circle cx="30" cy="100" r="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <circle cx="30" cy="150" r="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <!-- Nodes Layer 2 (Hidden) -->
+    <circle cx="105" cy="40" r="10" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <circle cx="105" cy="85" r="10" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <circle cx="105" cy="130" r="10" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <circle cx="105" cy="175" r="10" fill="#f8fafc" stroke="#ea580c" stroke-width="2.5" />
+    <!-- Zoom Box around bottom hidden node -->
+    <rect x="91" y="161" width="28" height="28" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="3 2" />
+    <!-- Nodes Layer 3 (Outputs) -->
+    <circle cx="180" cy="70" r="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+    <circle cx="180" cy="130" r="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+    <!-- Zoom projection lines -->
+    <line x1="119" y1="165" x2="250" y2="50" stroke="#ea580c" stroke-width="1.4" stroke-dasharray="3 3" />
+    <line x1="119" y1="185" x2="250" y2="240" stroke="#ea580c" stroke-width="1.4" stroke-dasharray="3 3" />
+  </g>
+
+  <!-- Right Side: Zoomed-in Individual Neuron -->
+  <g transform="translate(250, 25)">
+    <rect x="0" y="0" width="395" height="245" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" />
+    <text x="197" y="24" text-anchor="middle" class="net-lbl" fill="#c2410c">Isolated Single Neuron Architecture</text>
+    
+    <!-- Inputs and incoming weights -->
+    <g transform="translate(20, 35)">
+      <!-- x1 -->
+      <text x="10" y="25" class="math-text" fill="#0f172a" font-size="14px">x₁</text>
+      <line x1="28" y1="20" x2="110" y2="65" stroke="#0f172a" stroke-width="2" />
+      <text x="65" y="36" class="math-text" fill="#dc2626" font-size="11px">w₁</text>
+      <!-- x2 -->
+      <text x="10" y="65" class="math-text" fill="#0f172a" font-size="14px">x₂</text>
+      <line x1="28" y1="60" x2="110" y2="75" stroke="#0f172a" stroke-width="2" />
+      <text x="65" y="64" class="math-text" fill="#dc2626" font-size="11px">w₂</text>
+      <!-- dots -->
+      <text x="10" y="105" font-family="system-ui" font-weight="bold" font-size="14px" fill="#64748b">⋮</text>
+      <line x1="28" y1="100" x2="110" y2="90" stroke="#0f172a" stroke-width="2" stroke-dasharray="3 2" />
+      <!-- xn -->
+      <text x="10" y="145" class="math-text" fill="#0f172a" font-size="14px">xₙ</text>
+      <line x1="28" y1="140" x2="110" y2="105" stroke="#0f172a" stroke-width="2" />
+      <text x="65" y="132" class="math-text" fill="#dc2626" font-size="11px">wₙ</text>
+      <!-- Bias input (red arrow from top) -->
+      <line x1="145" y1="0" x2="145" y2="46" stroke="#dc2626" stroke-width="2.2" />
+      <polygon points="141,46 145,54 149,46" fill="#dc2626" />
+      <text x="153" y="20" class="math-text" fill="#dc2626" font-size="14px">b (bias)</text>
+      
+      <!-- Central Processing Node -->
+      <circle cx="150" cy="85" r="40" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" />
+      <!-- Divider between summation and activation -->
+      <line x1="150" y1="45" x2="150" y2="125" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="2 2" />
+      <text x="132" y="90" text-anchor="middle" font-family="system-ui" font-weight="bold" font-size="15px" fill="#0f172a">∑</text>
+      <text x="168" y="91" text-anchor="middle" class="math-text" fill="#0284c7" font-size="14px">f(·)</text>
+      <text x="132" y="112" text-anchor="middle" font-family="system-ui" font-size="7.5px" fill="#64748b">Sum</text>
+      <text x="168" y="112" text-anchor="middle" font-family="system-ui" font-size="7.5px" fill="#64748b">Activation</text>
+      
+      <!-- Output arrow -->
+      <line x1="190" y1="85" x2="255" y2="85" stroke="#059669" stroke-width="2.5" />
+      <polygon points="255,81 263,85 255,89" fill="#059669" />
+      <text x="272" y="90" class="math-text" fill="#059669" font-size="16px">y</text>
+    </g>
+    
+    <!-- Formula banner at bottom of card -->
+    <rect x="25" y="195" width="345" height="36" rx="5" fill="#ffffff" stroke="#fed7aa" />
+    <text x="197" y="218" text-anchor="middle" class="math-text" fill="#0f172a" font-size="14px">
+      y = f<tspan font-family="system-ui" font-style="normal">(</tspan> b + ∑ᵢ₌₁ⁿ wᵢ xᵢ <tspan font-family="system-ui" font-style="normal">)</tspan>
+    </text>
+  </g>
+</svg>

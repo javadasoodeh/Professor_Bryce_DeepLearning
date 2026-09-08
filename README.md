@@ -1,57 +1,42 @@
-# Professor Bryce — Deep Learning (English + Persian)
+# Professor Bryce — Deep Learning
 
-A bilingual, visual-first study guide for Professor Bryce's **Deep Learning** lecture series (Davidson CSC 381, Fall 2022).
+A bilingual English/Persian study guide for Professor Bryce's **Deep Learning** lecture series.
 
-## Current status
+## Course
 
-- ✅ Lesson 01 — **What is Deep Learning?**
-- ⏳ Lessons 02–26 — outline prepared; pages will be added as the remaining videos are processed.
-- 🌐 English and Persian lesson views
-- 🧭 Persistent course outline with one-click language switching
-- 🖼️ Rebuilt SVG teaching diagrams based on the lecture's whiteboard concepts
+### English
 
-## Start
+1. ✅ [Deep Learning: Foundations and Core Principles](./en/01-what-is-deep-learning.md)
+2. ✅ [Deep Learning Prerequisites: Essential Foundations](./en/02-deep-learning-prerequisites.md)
+3. ✅ [What Can a Single Neuron Compute?](./en/03-what-can-a-single-neuron-compute.md)
+4. ⏳ Lessons 04–26 are pending
 
-Open [`index.html`](./index.html), or enable **GitHub Pages** for the repository and use the site as a browsable course.
+[Open the full English outline →](./en/README.md)
 
-## Source lecture
+### فارسی
 
-- Lesson 01: https://www.youtube.com/watch?v=DrhJLHiia7g
-- Full playlist: https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9
-- Course: Davidson CSC 381: Deep Learning, Fall 2022
+1. ✅ [یادگیری عمیق: مبانی و اصول اصلی](./fa/01-what-is-deep-learning.md)
+2. ✅ [پیش‌نیازهای یادگیری عمیق: مبانی ضروری](./fa/02-deep-learning-prerequisites.md)
+3. ✅ [یک نورون منفرد چه چیزی می‌تواند محاسبه کند؟](./fa/03-what-can-a-single-neuron-compute.md)
+4. ⏳ درس‌های ۰۴ تا ۲۶ در ادامه اضافه می‌شوند
 
-## Design principle
+[مشاهده فهرست کامل فارسی →](./fa/README.md)
 
-The notes do **not** replace the lecture with a generic definition of deep learning. They preserve Professor Bryce's teaching path:
+## Lessons 01–03
 
-1. deep learning in everyday systems;
-2. machine learning as the overlap of AI and data science;
-3. regression, classification, and object-detection examples;
-4. neural networks as parameterized functions;
-5. gradient-based training;
-6. why smooth/differentiable activations matter;
-7. the broader idea of **differentiable programming**;
-8. where the course is going next.
+The first three lessons are available in both English and Persian, with the same equations, examples, section order, and tutorial diagrams in both languages.
 
-The diagrams are clean vector redraws of the ideas on the whiteboard, not screenshots copied from the video.
+## Visuals
 
-## Repository structure
+Lessons 01–03 include 19 SVG teaching diagrams:
 
-```text
-.
-├── index.html
-├── en/
-│   └── 01-what-is-deep-learning.html
-├── fa/
-│   └── 01-what-is-deep-learning.html
-├── assets/
-│   ├── css/styles.css
-│   ├── js/app.js
-│   └── images/lesson-01/*.svg
-└── sources/
-    └── lesson-01-verification.md
-```
+- 9 visuals for Lesson 01
+- 4 visuals for Lesson 02
+- 6 visuals for Lesson 03
 
-## Attribution
+## Source videos
 
-This is an independent study guide based on publicly available lectures by Professor Bryce. Original lecture videos and teaching content belong to their respective creator/rightsholder. The written explanations and SVG redraws in this repository are newly created for study and accessibility.
+- [01 — What is Deep Learning?](https://www.youtube.com/watch?v=DrhJLHiia7g)
+- [02 — Deep Learning Prerequisites](https://www.youtube.com/watch?v=RrM8Tn4-AJE)
+- [03 — What can a single neuron compute?](https://www.youtube.com/watch?v=Irb-auR40iA)
+- [Professor Bryce Deep Learning playlist](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)

@@ -1,0 +1,55 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .panel-title { font-family: system-ui, sans-serif; font-size: 15px; font-weight: bold; fill: #0f172a; }
+    .axis-label { font-family: system-ui, sans-serif; font-size: 12px; font-weight: bold; fill: #475569; }
+    .fn-label { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+  </style>
+  <!-- Regression Panel -->
+  <g transform="translate(40, 30)">
+    <text x="120" y="0" text-anchor="middle" class="panel-title">Regression: Continuous Outputs</text>
+    <line x1="30" y1="200" x2="250" y2="200" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="30" y1="200" x2="30" y2="30" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="255" y="205" class="axis-label">x</text>
+    <text x="25" y="25" class="axis-label">y</text>
+    <!-- Scatter points -->
+    <circle cx="50" cy="180" r="3.5" fill="#0284c7" />
+    <circle cx="75" cy="165" r="3.5" fill="#0284c7" />
+    <circle cx="95" cy="140" r="3.5" fill="#0284c7" />
+    <circle cx="120" cy="145" r="3.5" fill="#0284c7" />
+    <circle cx="140" cy="115" r="3.5" fill="#0284c7" />
+    <circle cx="170" cy="95" r="3.5" fill="#0284c7" />
+    <circle cx="190" cy="80" r="3.5" fill="#0284c7" />
+    <circle cx="215" cy="65" r="3.5" fill="#0284c7" />
+    <!-- Best-fit Line -->
+    <line x1="30" y1="195" x2="235" y2="55" stroke="#10b981" stroke-width="2.5" />
+    <text x="180" y="50" class="fn-label" fill="#059669">f(x) = y</text>
+  </g>
+  <!-- Classification Panel -->
+  <g transform="translate(370, 30)">
+    <text x="120" y="0" text-anchor="middle" class="panel-title">Classification: Discrete Labels</text>
+    <line x1="30" y1="200" x2="250" y2="200" stroke="#64748b" stroke-width="2" />
+    <line x1="30" y1="200" x2="30" y2="30" stroke="#64748b" stroke-width="2" />
+    <text x="255" y="205" class="axis-label">x₁</text>
+    <text x="20" y="25" class="axis-label">x₂</text>
+    <!-- Class 0 dots (red) -->
+    <circle cx="55" cy="180" r="3.5" fill="#ef4444" />
+    <circle cx="70" cy="155" r="3.5" fill="#ef4444" />
+    <circle cx="85" cy="175" r="3.5" fill="#ef4444" />
+    <circle cx="100" cy="160" r="3.5" fill="#ef4444" />
+    <circle cx="60" cy="135" r="3.5" fill="#ef4444" />
+    <circle cx="115" cy="180" r="3.5" fill="#ef4444" />
+    <!-- Class 1 dots (teal) -->
+    <circle cx="140" cy="110" r="3.5" fill="#059669" />
+    <circle cx="160" cy="70" r="3.5" fill="#059669" />
+    <circle cx="180" cy="130" r="3.5" fill="#059669" />
+    <circle cx="210" cy="85" r="3.5" fill="#059669" />
+    <circle cx="190" cy="50" r="3.5" fill="#059669" />
+    <circle cx="225" cy="120" r="3.5" fill="#059669" />
+    <circle cx="120" cy="65" r="3.5" fill="#059669" />
+    <!-- Decision boundary -->
+    <path d="M 30 110 Q 115 125 155 200" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5 4" />
+    <text x="140" y="185" class="fn-label" fill="#dc2626">Decision Boundary</text>
+    <text x="65" y="195" font-family="system-ui" font-size="11px" font-weight="bold" fill="#ef4444">Class 0</text>
+    <text x="195" y="45" font-family="system-ui" font-size="11px" font-weight="bold" fill="#059669">Class 1</text>
+  </g>
+</svg>

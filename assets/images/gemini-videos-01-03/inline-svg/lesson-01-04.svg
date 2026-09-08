@@ -1,0 +1,66 @@
+<svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .bio-lbl { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+    .node-lbl { font-family: system-ui, sans-serif; font-size: 12px; font-weight: bold; fill: #0f172a; }
+  </style>
+  <!-- Biological Neuron Scheme -->
+  <g transform="translate(40, 20)">
+    <text x="120" y="15" text-anchor="middle" font-family="system-ui" font-size="14px" font-weight="bold" fill="#0f172a">Biological Neuron</text>
+    <!-- Soma -->
+    <circle cx="80" cy="70" r="22" fill="#fed7aa" stroke="#ea580c" stroke-width="2" />
+    <circle cx="80" cy="70" r="7" fill="#c2410c" />
+    <text x="80" y="105" text-anchor="middle" class="bio-lbl">Soma (Cell Body)</text>
+    <!-- Dendrites -->
+    <path d="M 60 60 L 25 35 M 60 75 L 15 75 M 60 85 L 25 105" stroke="#ea580c" stroke-width="2" stroke-linecap="round" />
+    <text x="25" y="25" text-anchor="middle" class="bio-lbl">Dendrites (Inputs)</text>
+    <!-- Axon -->
+    <line x1="102" y1="70" x2="200" y2="70" stroke="#ea580c" stroke-width="3" stroke-linecap="round" />
+    <!-- Axon terminals -->
+    <path d="M 200 70 L 235 45 M 200 70 L 245 70 M 200 70 L 235 95" stroke="#ea580c" stroke-width="2" stroke-linecap="round" />
+    <text x="150" y="60" text-anchor="middle" class="bio-lbl">Axon (Transmission)</text>
+    <text x="225" y="115" text-anchor="middle" class="bio-lbl">Synaptic Terminals</text>
+  </g>
+  <!-- Multi-layer Network Scheme -->
+  <g transform="translate(360, 20)">
+    <text x="140" y="15" text-anchor="middle" font-family="system-ui" font-size="14px" font-weight="bold" fill="#0f172a">Artificial Neural Network: f(x⃗) = y⃗</text>
+    <!-- Connections Layer 1 to Layer 2 -->
+    <g stroke="#cbd5e1" stroke-width="1.2">
+      <!-- Input to Hidden 1 -->
+      <line x1="30" y1="60" x2="110" y2="40"/><line x1="30" y1="60" x2="110" y2="90"/><line x1="30" y1="60" x2="110" y2="140"/><line x1="30" y1="60" x2="110" y2="190"/>
+      <line x1="30" y1="115" x2="110" y2="40"/><line x1="30" y1="115" x2="110" y2="90"/><line x1="30" y1="115" x2="110" y2="140"/><line x1="30" y1="115" x2="110" y2="190"/>
+      <line x1="30" y1="170" x2="110" y2="40"/><line x1="30" y1="170" x2="110" y2="90"/><line x1="30" y1="170" x2="110" y2="140"/><line x1="30" y1="170" x2="110" y2="190"/>
+      <!-- Hidden 1 to Hidden 2 -->
+      <line x1="110" y1="40" x2="190" y2="40"/><line x1="110" y1="40" x2="190" y2="90"/><line x1="110" y1="40" x2="190" y2="140"/><line x1="110" y1="40" x2="190" y2="190"/>
+      <line x1="110" y1="90" x2="190" y2="40"/><line x1="110" y1="90" x2="190" y2="90"/><line x1="110" y1="90" x2="190" y2="140"/><line x1="110" y1="90" x2="190" y2="190"/>
+      <line x1="110" y1="140" x2="190" y2="40"/><line x1="110" y1="140" x2="190" y2="90"/><line x1="110" y1="140" x2="190" y2="140"/><line x1="110" y1="140" x2="190" y2="190"/>
+      <line x1="110" y1="190" x2="190" y2="40"/><line x1="110" y1="190" x2="190" y2="90"/><line x1="110" y1="190" x2="190" y2="140"/><line x1="110" y1="190" x2="190" y2="190"/>
+      <!-- Hidden 2 to Output -->
+      <line x1="190" y1="40" x2="260" y2="85"/><line x1="190" y1="40" x2="260" y2="145"/>
+      <line x1="190" y1="90" x2="260" y2="85"/><line x1="190" y1="90" x2="260" y2="145"/>
+      <line x1="190" y1="140" x2="260" y2="85"/><line x1="190" y1="140" x2="260" y2="145"/>
+      <line x1="190" y1="190" x2="260" y2="85"/><line x1="190" y1="190" x2="260" y2="145"/>
+    </g>
+    <!-- Input Nodes -->
+    <circle cx="30" cy="60" r="11" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="10" y="64" class="node-lbl">x₁</text>
+    <circle cx="30" cy="115" r="11" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="10" y="119" class="node-lbl">x₂</text>
+    <circle cx="30" cy="170" r="11" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="10" y="174" class="node-lbl">x₃</text>
+    <!-- Hidden Layer 1 Nodes -->
+    <circle cx="110" cy="40" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="110" cy="90" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="110" cy="140" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="110" cy="190" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <!-- Hidden Layer 2 Nodes -->
+    <circle cx="190" cy="40" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="190" cy="90" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="190" cy="140" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <circle cx="190" cy="190" r="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" />
+    <!-- Output Nodes -->
+    <circle cx="260" cy="85" r="11" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+    <text x="278" y="89" class="node-lbl">y₁</text>
+    <circle cx="260" cy="145" r="11" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+    <text x="278" y="149" class="node-lbl">y₂</text>
+  </g>
+</svg>

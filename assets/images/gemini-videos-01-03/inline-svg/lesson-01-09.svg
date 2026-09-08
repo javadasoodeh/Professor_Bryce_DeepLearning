@@ -1,0 +1,32 @@
+<svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .step-box { rx: 6; stroke-width: 1.5; }
+    .step-title { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; }
+    .step-desc { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+  </style>
+  <!-- Stage 1 -->
+  <rect x="20" y="30" width="190" height="120" class="step-box" fill="#f8fafc" stroke="#64748b" />
+  <text x="35" y="55" class="step-title" fill="#0f172a">1. Fundamentals</text>
+  <text x="35" y="75" class="step-desc">• Linear Regression</text>
+  <text x="35" y="93" class="step-desc">• Decision Boundaries</text>
+  <text x="35" y="111" class="step-desc">• Single-Neuron Mechanics</text>
+  <text x="35" y="129" class="step-desc">• Gradient Descent Math</text>
+  <!-- Arrow 1 -->
+  <line x1="215" y1="90" x2="238" y2="90" stroke="#94a3b8" stroke-width="2" />
+  <!-- Stage 2 -->
+  <rect x="245" y="30" width="190" height="120" class="step-box" fill="#eff6ff" stroke="#2563eb" />
+  <text x="260" y="55" class="step-title" fill="#1e40af">2. Neural Networks</text>
+  <text x="260" y="75" class="step-desc">• Smooth Activations (Sigmoid)</text>
+  <text x="260" y="93" class="step-desc">• Deep Multi-layer Stacks</text>
+  <text x="260" y="111" class="step-desc">• Backpropagation & SGD</text>
+  <text x="260" y="129" class="step-desc">• Modern Deep Learning APIs</text>
+  <!-- Arrow 2 -->
+  <line x1="440" y1="90" x2="463" y2="90" stroke="#94a3b8" stroke-width="2" />
+  <!-- Stage 3 -->
+  <rect x="470" y="30" width="190" height="120" class="step-box" fill="#ecfdf5" stroke="#059669" />
+  <text x="485" y="55" class="step-title" fill="#065f46">3. Advanced Mastery</text>
+  <text x="485" y="75" class="step-desc">• Differentiable Programs</text>
+  <text x="485" y="93" class="step-desc">• Complex Data Pipelines</text>
+  <text x="485" y="111" class="step-desc">• Model Failure Modes</text>
+  <text x="485" y="129" class="step-desc">• Critical System Evaluation</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg viewBox="0 0 620 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:620px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .title { font-family: system-ui, sans-serif; font-size: 16px; font-weight: bold; fill: #0f172a; }
+    .label { font-family: system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1e293b; }
+    .sub { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+    .center-label { font-family: system-ui, sans-serif; font-size: 18px; font-weight: 800; fill: #047857; }
+  </style>
+  <text x="310" y="30" text-anchor="middle" class="title">The Domain of Machine Learning</text>
+  <!-- AI Circle -->
+  <circle cx="230" cy="145" r="105" fill="#3b82f6" fill-opacity="0.15" stroke="#2563eb" stroke-width="2.5" />
+  <!-- DS Circle -->
+  <circle cx="390" cy="145" r="105" fill="#10b981" fill-opacity="0.15" stroke="#059669" stroke-width="2.5" />
+  <!-- AI Text -->
+  <text x="170" y="130" text-anchor="middle" class="label">Artificial Intelligence</text>
+  <text x="170" y="150" text-anchor="middle" class="sub">Computationally solving tasks</text>
+  <text x="170" y="165" text-anchor="middle" class="sub">requiring human intelligence</text>
+  <!-- DS Text -->
+  <text x="450" y="130" text-anchor="middle" class="label">Data Science</text>
+  <text x="450" y="150" text-anchor="middle" class="sub">Organizing, analyzing, and</text>
+  <text x="450" y="165" text-anchor="middle" class="sub">extracting insights from data</text>
+  <!-- ML Overlap -->
+  <circle cx="310" cy="145" r="32" fill="#ffffff" stroke="#059669" stroke-width="2" stroke-dasharray="4 2" />
+  <text x="310" y="142" text-anchor="middle" class="center-label">ML</text>
+  <text x="310" y="158" text-anchor="middle" class="sub" style="font-weight:600; fill:#065f46;">Inference</text>
+  <text x="310" y="265" text-anchor="middle" class="sub">ML automates inference by learning patterns directly from data.</text>
+</svg>

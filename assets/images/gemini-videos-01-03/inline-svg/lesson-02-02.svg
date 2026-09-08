@@ -1,0 +1,32 @@
+<svg style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; max-height:170px;" viewbox="0 0 650 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Box 1: Conceptual -->
+<g transform="translate(20, 20)">
+<rect fill="#f8fafc" height="135" rx="5" stroke="#94a3b8" stroke-width="1.4" width="185" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="15" y="24">1. Conceptual Layer</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" font-weight="bold" x="15" y="44">• Pseudocode &amp; Math</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="66">Used during lectures and notes</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="80">to explain underlying logic and</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="94">mathematical structures without</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="108">language-specific syntax noise.</text>
+</g>
+<!-- Box 2: Julia -->
+<g transform="translate(232, 20)">
+<rect fill="#fdf4ff" height="135" rx="5" stroke="#d946ef" stroke-width="1.4" width="185" x="0" y="0"></rect>
+<text fill="#86198f" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="15" y="24">2. Julia Language</text>
+<text fill="#a21caf" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" font-weight="bold" x="15" y="44">• "Under the Hood" Mechanics</text>
+<text fill="#701a75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="66">The single best programming</text>
+<text fill="#701a75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="80">language for translating directly</text>
+<text fill="#701a75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="94">between mathematical notation</text>
+<text fill="#701a75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="108">and executable computation.</text>
+</g>
+<!-- Box 3: Python -->
+<g transform="translate(445, 20)">
+<rect fill="#eff6ff" height="135" rx="5" stroke="#2563eb" stroke-width="1.4" width="185" x="0" y="0"></rect>
+<text fill="#1e40af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="15" y="24">3. Python Ecosystem</text>
+<text fill="#1d4ed8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" font-weight="bold" x="15" y="44">• Production Libraries</text>
+<text fill="#1e3a8a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="66">The primary industry standard.</text>
+<text fill="#1e3a8a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="80">Hands-on practical training with</text>
+<text fill="#1e3a8a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" x="15" y="94">PyTorch &amp; TensorFlow</text>
+<text fill="#1e3a8a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" x="15" y="108">for building production models.</text>
+</g>
+</svg>

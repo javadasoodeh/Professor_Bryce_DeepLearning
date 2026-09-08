@@ -1,0 +1,33 @@
+<svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:640px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .ax-lbl { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #475569; }
+    .eq-lbl { font-family: system-ui, sans-serif; font-size: 14px; font-weight: bold; }
+    .ann-lbl { font-family: system-ui, sans-serif; font-size: 11px; fill: #334155; }
+  </style>
+  <g transform="translate(60, 30)">
+    <!-- Axes -->
+    <line x1="20" y1="180" x2="380" y2="180" stroke="#64748b" stroke-width="1.8" />
+    <line x1="200" y1="210" x2="200" y2="20" stroke="#64748b" stroke-width="1.8" />
+    <text x="390" y="185" class="ax-lbl">x (input sum)</text>
+    <text x="200" y="12" text-anchor="middle" class="ax-lbl">a (activation)</text>
+    <text x="185" y="195" font-family="system-ui" font-size="11px" fill="#64748b">0</text>
+    <text x="185" y="65" font-family="system-ui" font-size="11px" fill="#64748b">1</text>
+    <!-- Step Function (Blue) -->
+    <line x1="20" y1="180" x2="200" y2="180" stroke="#2563eb" stroke-width="3" />
+    <line x1="200" y1="180" x2="200" y2="60" stroke="#2563eb" stroke-width="2" stroke-dasharray="3 3" />
+    <line x1="200" y1="60" x2="380" y2="60" stroke="#2563eb" stroke-width="3" />
+    <circle cx="200" cy="180" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+    <circle cx="200" cy="60" r="3.5" fill="#2563eb" />
+    <!-- Sigmoid Function (Red) -->
+    <path d="M 20 178 C 120 178, 160 170, 200 120 C 240 70, 280 62, 380 62" fill="none" stroke="#dc2626" stroke-width="3" />
+    <!-- Legend & Labels -->
+    <text x="410" y="70" class="eq-lbl" fill="#dc2626">σ(x) = 1 / (1 + e⁻ˣ)</text>
+    <text x="410" y="90" class="ann-lbl">• Smooth and differentiable</text>
+    <text x="410" y="105" class="ann-lbl">• Non-zero derivative everywhere</text>
+    <text x="410" y="120" class="ann-lbl">• Yields informative training signals</text>
+    <text x="410" y="160" class="eq-lbl" fill="#2563eb">Step Function</text>
+    <text x="410" y="180" class="ann-lbl">• Derivative = 0 almost everywhere</text>
+    <text x="410" y="195" class="ann-lbl">• Undefined at threshold discontinuity</text>
+    <text x="410" y="210" class="ann-lbl">• Cannot support gradient descent</text>
+  </g>
+</svg>

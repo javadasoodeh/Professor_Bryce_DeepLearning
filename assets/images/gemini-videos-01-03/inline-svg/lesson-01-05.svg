@@ -1,0 +1,41 @@
+<svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:620px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .math-text { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #0f172a; }
+    .wt-text { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #0284c7; }
+    .calc-box { font-family: monospace; font-size: 15px; font-weight: bold; fill: #dc2626; }
+  </style>
+  <!-- Input Nodes -->
+  <g transform="translate(60, 40)">
+    <!-- Top Input: 1 -->
+    <circle cx="30" cy="20" r="16" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
+    <text x="30" y="25" text-anchor="middle" font-family="system-ui" font-size="14px" font-weight="bold" fill="#dc2626">1</text>
+    <!-- Middle Input: 0 -->
+    <circle cx="30" cy="85" r="16" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
+    <text x="30" y="90" text-anchor="middle" font-family="system-ui" font-size="14px" font-weight="bold" fill="#dc2626">0</text>
+    <!-- Bottom Input: 1 -->
+    <circle cx="30" cy="150" r="16" fill="#f8fafc" stroke="#dc2626" stroke-width="2" />
+    <text x="30" y="155" text-anchor="middle" font-family="system-ui" font-size="14px" font-weight="bold" fill="#dc2626">1</text>
+    <!-- Edges to central neuron -->
+    <line x1="46" y1="20" x2="230" y2="85" stroke="#0284c7" stroke-width="2" />
+    <line x1="46" y1="85" x2="230" y2="85" stroke="#0284c7" stroke-width="2" />
+    <line x1="46" y1="150" x2="230" y2="85" stroke="#0284c7" stroke-width="2" />
+    <!-- Weights -->
+    <text x="130" y="42" class="wt-text">w₁ = 2</text>
+    <text x="130" y="77" class="wt-text">w₂ = 1</text>
+    <text x="130" y="132" class="wt-text">w₃ = -1</text>
+    <!-- Central Neuron Node -->
+    <circle cx="250" cy="85" r="26" fill="#f8fafc" stroke="#0f172a" stroke-width="2" />
+    <text x="250" y="90" text-anchor="middle" font-family="system-ui" font-size="12px" font-weight="bold" fill="#0f172a">≥ 0.5</text>
+    <!-- Output Edge & Output -->
+    <line x1="276" y1="85" x2="340" y2="85" stroke="#dc2626" stroke-width="2.5" marker-end="url(#red-arrow)" />
+    <text x="355" y="80" font-family="system-ui" font-size="13px" font-weight="bold" fill="#dc2626">Output</text>
+    <text x="360" y="100" font-family="system-ui" font-size="18px" font-weight="bold" fill="#dc2626">1</text>
+  </g>
+  <!-- Step Calculation Display -->
+  <g transform="translate(100, 215)">
+    <text x="200" y="0" text-anchor="middle" class="calc-box">Sum = (1 × 2) + (0 × 1) + (1 × -1) = 2 + 0 - 1 = 1</text>
+    <text x="200" y="20" text-anchor="middle" font-family="system-ui" font-size="13px" fill="#0f172a">
+      Since <tspan font-weight="bold">1 ≥ 0.5</tspan> (threshold exceeded), the neuron activates and outputs <tspan font-weight="bold" fill="#dc2626">1</tspan>.
+    </text>
+  </g>
+</svg>

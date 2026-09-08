@@ -1,0 +1,27 @@
+<svg viewBox="0 0 540 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:540px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .obj-text { font-family: system-ui, sans-serif; font-size: 11px; font-weight: bold; fill: #ffffff; }
+    .coord-text { font-family: system-ui, sans-serif; font-size: 11px; fill: #334155; }
+  </style>
+  <!-- Basket Container -->
+  <path d="M 120 180 Q 240 230 360 180 L 380 140 Q 240 160 100 140 Z" fill="#b45309" fill-opacity="0.25" stroke="#78350f" stroke-width="2" />
+  <!-- Orange Fruit -->
+  <circle cx="180" cy="140" r="30" fill="#f97316" stroke="#ea580c" stroke-width="2" />
+  <!-- Apple Fruit -->
+  <circle cx="270" cy="135" r="32" fill="#ef4444" stroke="#dc2626" stroke-width="2" />
+  <path d="M 270 103 Q 275 90 285 92" stroke="#15803d" stroke-width="2.5" fill="none" />
+  <!-- Orange Bounding Box -->
+  <rect x="145" y="105" width="70" height="70" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 2" />
+  <rect x="145" y="87" width="56" height="18" fill="#2563eb" />
+  <text x="148" y="100" class="obj-text">Orange</text>
+  <!-- Apple Bounding Box -->
+  <rect x="233" y="90" width="74" height="85" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="4 2" />
+  <rect x="233" y="72" width="48" height="18" fill="#16a34a" />
+  <text x="237" y="85" class="obj-text">Apple</text>
+  <!-- Explanatory Callouts -->
+  <text x="350" y="75" font-family="system-ui" font-size="12px" font-weight="bold" fill="#0f172a">Object Detection Outputs:</text>
+  <text x="350" y="98" class="coord-text"><tspan font-weight="bold" fill="#2563eb">• Bounding Box Coordinates:</tspan> [x, y, w, h]</text>
+  <text x="362" y="114" class="coord-text">→ Continuous variables (<tspan font-weight="bold">Regression</tspan>)</text>
+  <text x="350" y="138" class="coord-text"><tspan font-weight="bold" fill="#16a34a">• Object Category Label:</tspan> "Apple", "Orange"</text>
+  <text x="362" y="154" class="coord-text">→ Discrete class (<tspan font-weight="bold">Classification</tspan>)</text>
+</svg>

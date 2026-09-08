@@ -1,0 +1,47 @@
+<svg style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; max-height:260px;" viewbox="0 0 680 270" xmlns="http://www.w3.org/2000/svg">
+<!-- Title -->
+<text fill="#047857" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14px" font-weight="bold" text-anchor="middle" x="340" y="24">DL Prerequisites</text>
+<line stroke="#059669" stroke-width="1.8" x1="260" x2="420" y1="30" y2="30"></line>
+<!-- Column 1: Data Structures -->
+<g transform="translate(20, 42)">
+<rect fill="#f8fafc" height="215" rx="6" stroke="#cbd5e1" stroke-width="1.4" width="200" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5px" font-weight="bold" x="14" y="24">Data Structures</text>
+<text fill="#dc2626" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="14" y="44">• programming!</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="62">• algorithms / efficiency</text>
+<line stroke="#e2e8f0" stroke-width="1" x1="14" x2="186" y1="76" y2="76"></line>
+<text fill="#1e293b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" x="14" y="94">We will use:</text>
+<text fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="112">– Python <tspan fill="#64748b">(PyTorch / TF)</tspan></text>
+<text fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="128">– Julia <tspan fill="#64748b">(under the hood)</tspan></text>
+<text fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="144">– pseudocode</text>
+<text fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="160">– mathematical description</text>
+<rect fill="#eff6ff" height="28" rx="4" stroke="#bfdbfe" width="176" x="12" y="176"></rect>
+<text fill="#1e40af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.8px" font-weight="bold" text-anchor="middle" x="100" y="194">Ensures Solid Coding Fluency</text>
+</g>
+<!-- Column 2: Linear Algebra -->
+<g transform="translate(240, 42)">
+<rect fill="#f8fafc" height="215" rx="6" stroke="#cbd5e1" stroke-width="1.4" width="200" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5px" font-weight="bold" x="14" y="24">Linear Algebra</text>
+<text fill="#dc2626" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="14" y="44">• matrix notation!</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="62">• vectors</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="78">– dot products, norms</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="96">• matrices &amp; tensors</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5px" x="24" y="112">– multiplication, transforms</text>
+<line stroke="#e2e8f0" stroke-width="1" x1="14" x2="186" y1="126" y2="126"></line>
+<text fill="#0369a1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" x="14" y="142">Core Target Operation:</text>
+<rect fill="#f0f9ff" height="52" rx="4" stroke="#bae6fd" width="176" x="12" y="152"></rect>
+<text fill="#0284c7" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="13px" font-style="italic" font-weight="bold" text-anchor="middle" x="100" y="182">|| y⃗ − f(Mx⃗) ||²</text>
+</g>
+<!-- Column 3: Multivariable Calculus -->
+<g transform="translate(460, 42)">
+<rect fill="#f8fafc" height="215" rx="6" stroke="#cbd5e1" stroke-width="1.4" width="200" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5px" font-weight="bold" x="14" y="24">Multivariable Calc</text>
+<text fill="#dc2626" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5px" font-weight="bold" x="14" y="44">• gradients!</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="62">• partial derivatives</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="78">• chain rule</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" x="14" y="94">• product / quotient rules</text>
+<line stroke="#e2e8f0" stroke-width="1" x1="14" x2="186" y1="110" y2="110"></line>
+<text fill="#b91c1c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" x="14" y="126">Core Target Operation:</text>
+<rect fill="#fef2f2" height="68" rx="4" stroke="#fecaca" width="176" x="12" y="136"></rect>
+<text fill="#dc2626" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="12.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="100" y="174">∇_w⃗ ( 1 / (1 − e^(w⃗·x⃗)) )²</text>
+</g>
+</svg>

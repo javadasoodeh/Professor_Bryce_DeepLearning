@@ -1,0 +1,39 @@
+<svg viewBox="0 0 660 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:660px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .code-title { font-family: monospace; font-size: 13px; font-weight: bold; fill: #0f172a; }
+    .op-lbl { font-family: system-ui, sans-serif; font-size: 15px; font-weight: bold; fill: #0f172a; }
+    .grad-lbl { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; }
+    .grad-desc { font-family: system-ui, sans-serif; font-size: 12px; fill: #334155; }
+  </style>
+  <!-- Program File Box -->
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="100" height="120" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="2" />
+    <path d="M 75 0 L 100 25 L 75 25 Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.5" />
+    <text x="12" y="24" class="code-title">prog.py</text>
+    <!-- Code lines representation -->
+    <line x1="12" y1="42" x2="60" y2="42" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+    <line x1="12" y1="58" x2="85" y2="58" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+    <line x1="12" y1="74" x2="70" y2="74" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+    <line x1="12" y1="90" x2="50" y2="90" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+    <line x1="12" y1="106" x2="75" y2="106" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <!-- Transform Arrow -->
+  <line x1="155" y1="100" x2="215" y2="100" stroke="#0f172a" stroke-width="2.5" marker-end="url(#arrow)" />
+  <!-- Mathematical Function Box -->
+  <g transform="translate(230, 60)">
+    <rect x="0" y="0" width="130" height="80" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+    <text x="65" y="46" text-anchor="middle" class="op-lbl" fill="#1e40af" style="font-size:18px;">F(x, θ)</text>
+    <text x="45" y="70" text-anchor="middle" font-family="system-ui" font-size="10px" fill="#64748b">inputs (x)</text>
+    <text x="95" y="70" text-anchor="middle" font-family="system-ui" font-size="10px" fill="#64748b">params (θ)</text>
+  </g>
+  <!-- Gradients & Utility -->
+  <g transform="translate(390, 65)">
+    <!-- Parameter gradient -->
+    <text x="0" y="20" class="grad-lbl" fill="#047857">∇_θ F</text>
+    <text x="48" y="20" class="grad-desc">Calculates parameter updates to <tspan font-weight="bold">train F</tspan>.</text>
+    <!-- Input gradient -->
+    <text x="0" y="65" class="grad-lbl" fill="#0284c7">∇_x F</text>
+    <text x="48" y="65" class="grad-desc">Backpropagates derivatives to compose F within</text>
+    <text x="48" y="82" class="grad-desc"><tspan font-weight="bold">larger deep learning architectures</tspan>.</text>
+  </g>
+</svg>

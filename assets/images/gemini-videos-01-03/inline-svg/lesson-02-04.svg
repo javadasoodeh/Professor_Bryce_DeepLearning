@@ -1,0 +1,51 @@
+<svg style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; max-height:185px;" viewbox="0 0 660 195" xmlns="http://www.w3.org/2000/svg">
+<!-- Box: Vector Dot Product -->
+<g transform="translate(25, 20)">
+<rect fill="#f8fafc" height="145" rx="5" stroke="#94a3b8" stroke-width="1.2" width="135" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="67" y="20">1. Dot Product</text>
+<rect fill="#e0f2fe" height="35" rx="4" stroke="#0284c7" width="105" x="15" y="32"></rect>
+<text fill="#0369a1" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="54">z = w⃗ · x⃗ = Σ wᵢ xᵢ</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5px" text-anchor="middle" x="67" y="85">Partial w.r.t. wᵢ:</text>
+<text fill="#0284c7" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="10.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="105">∂z / ∂wᵢ = xᵢ</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="67" y="128">Linear scalar product</text>
+</g>
+<!-- Arrow 1 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="168" x2="192" y1="92" y2="92"></line>
+<polygon fill="#94a3b8" points="192,89 198,92 192,95"></polygon>
+<!-- Box: Denominator -->
+<g transform="translate(200, 20)">
+<rect fill="#f8fafc" height="145" rx="5" stroke="#94a3b8" stroke-width="1.2" width="135" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="67" y="20">2. Exponential Term</text>
+<rect fill="#fef3c7" height="35" rx="4" stroke="#d97706" width="105" x="15" y="32"></rect>
+<text fill="#b45309" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="54">u = 1 − eᶻ</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5px" text-anchor="middle" x="67" y="85">Derivative w.r.t. z:</text>
+<text fill="#b45309" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="10.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="105">du / dz = −eᶻ</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="67" y="128">Exponential decay/growth</text>
+</g>
+<!-- Arrow 2 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="343" x2="367" y1="92" y2="92"></line>
+<polygon fill="#94a3b8" points="367,89 373,92 367,95"></polygon>
+<!-- Box: Outer Power -->
+<g transform="translate(375, 20)">
+<rect fill="#f8fafc" height="145" rx="5" stroke="#94a3b8" stroke-width="1.2" width="135" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="67" y="20">3. Outer Power Rule</text>
+<rect fill="#fee2e2" height="35" rx="4" stroke="#ef4444" width="105" x="15" y="32"></rect>
+<text fill="#b91c1c" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="54">g(u) = (u⁻¹)² = u⁻²</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5px" text-anchor="middle" x="67" y="85">Derivative w.r.t. u:</text>
+<text fill="#b91c1c" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="10.5px" font-style="italic" font-weight="bold" text-anchor="middle" x="67" y="105">dg / du = −2 u⁻³</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="67" y="128">Quotient / power rule</text>
+</g>
+<!-- Arrow 3 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="518" x2="542" y1="92" y2="92"></line>
+<polygon fill="#94a3b8" points="542,89 548,92 542,95"></polygon>
+<!-- Box: Chain Rule & Gradient Vector -->
+<g transform="translate(550, 20)">
+<rect fill="#fdf2f8" height="145" rx="5" stroke="#f472b6" stroke-width="1.2" width="100" x="0" y="0"></rect>
+<text fill="#831843" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10px" font-weight="bold" text-anchor="middle" x="50" y="20">4. Assemble ∇</text>
+<circle cx="50" cy="52" fill="#ffffff" r="18" stroke="#db2777" stroke-width="1.2"></circle>
+<text fill="#be185d" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="12px" font-style="italic" font-weight="bold" text-anchor="middle" x="50" y="57">∇_w⃗</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="50" y="88">Vector of all</text>
+<text fill="#be185d" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="9px" font-style="italic" font-weight="bold" text-anchor="middle" x="50" y="102">[ ∂g / ∂wᵢ ]</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="50" y="124">Direction of ascent</text>
+</g>
+</svg>

@@ -1,0 +1,94 @@
+<svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .panel-header { font-family: system-ui, sans-serif; font-size: 14px; font-weight: bold; fill: #0f172a; }
+    .math-sym { font-family: "DejaVu Serif", "Times New Roman", serif; font-style: italic; font-weight: bold; }
+    .sub-desc { font-family: system-ui, sans-serif; font-size: 11px; fill: #475569; }
+  </style>
+
+  <!-- Left: Schematic of 2-Input Step Neuron -->
+  <g transform="translate(25, 20)">
+    <text x="135" y="15" text-anchor="middle" class="panel-header">2D Step Neuron Model</text>
+    <!-- Inputs -->
+    <text x="15" y="65" class="math-sym" fill="#0f172a" font-size="15px">x₁</text>
+    <line x1="35" y1="60" x2="110" y2="80" stroke="#0f172a" stroke-width="2" />
+    <polygon points="108,77 114,80 108,83" fill="#0f172a" />
+    <text x="65" y="62" class="math-sym" fill="#dc2626" font-size="12px">w₁</text>
+    
+    <text x="15" y="115" class="math-sym" fill="#0f172a" font-size="15px">x₂</text>
+    <line x1="35" y1="110" x2="110" y2="90" stroke="#0f172a" stroke-width="2" />
+    <polygon points="108,87 114,90 108,93" fill="#0f172a" />
+    <text x="65" y="114" class="math-sym" fill="#dc2626" font-size="12px">w₂</text>
+
+    <!-- Bias arrow -->
+    <text x="130" y="24" class="math-sym" fill="#dc2626" font-size="13px">b</text>
+    <line x1="130" y1="28" x2="130" y2="58" stroke="#dc2626" stroke-width="2" />
+    <polygon points="127,58 130,64 133,58" fill="#dc2626" />
+
+    <!-- Node -->
+    <circle cx="130" cy="85" r="24" fill="#ffffff" stroke="#0f172a" stroke-width="2.2" />
+    <!-- Step glyph inside node -->
+    <path d="M 116 95 L 130 95 L 130 75 L 144 75" fill="none" stroke="#0284c7" stroke-width="2.2" />
+
+    <!-- Output -->
+    <line x1="154" y1="85" x2="205" y2="85" stroke="#059669" stroke-width="2" />
+    <polygon points="205,82 211,85 205,88" fill="#059669" />
+    <text x="218" y="90" class="math-sym" fill="#059669" font-size="16px">y</text>
+    
+    <!-- Equations box -->
+    <rect x="5" y="135" width="265" height="150" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="15" y="158" font-family="system-ui" font-size="12px" font-weight="bold" fill="#0f172a">Mathematical Formulation:</text>
+    <text x="15" y="180" class="math-sym" fill="#0f172a" font-size="12.5px">x = x₁w₁ + x₂w₂ + b</text>
+    <text x="15" y="206" class="math-sym" fill="#059669" font-size="12.5px">y = { 0  if  x ≤ 0</text>
+    <text x="37" y="226" class="math-sym" fill="#059669" font-size="12.5px">{ 1  if  x > 0</text>
+    <text x="15" y="254" font-family="system-ui" font-size="11px" font-weight="bold" fill="#dc2626">Example Parameters:</text>
+    <text x="15" y="272" class="math-sym" fill="#dc2626" font-size="12px">w₁ = 2,  w₂ = -1,  b = 1</text>
+  </g>
+
+  <!-- Right: 2D Feature Space and Decision Boundary -->
+  <g transform="translate(340, 20)">
+    <text x="160" y="15" text-anchor="middle" class="panel-header">Partitioned Feature Space (Classification)</text>
+    <g transform="translate(30, 25)">
+      <!-- Feature Plane Axes -->
+      <line x1="10" y1="120" x2="250" y2="120" stroke="#64748b" stroke-width="1.8" />
+      <line x1="130" y1="210" x2="130" y2="10" stroke="#64748b" stroke-width="1.8" />
+      <text x="256" y="124" class="math-sym" fill="#475569" font-size="13px">x₁</text>
+      <text x="126" y="5" class="math-sym" fill="#475569" font-size="13px">x₂</text>
+      
+      <!-- Decision Boundary Line: 2x1 - x2 + 1 = 0 => x2 = 2x1 + 1 -->
+      <!-- Center is (130, 120). Scale: 25px per unit.
+           x1=0 -> x2=1 (130, 95).
+           x1=1 -> x2=3 (155, 45).
+           x1=-1 -> x2=-1 (105, 145).
+           x1=-2 -> x2=-3 (80, 195). -->
+      <line x1="75" y1="205" x2="165" y2="25" stroke="#dc2626" stroke-width="2.5" />
+      <polygon points="163,22 168,20 168,27" fill="#dc2626" />
+      <polygon points="77,208 72,210 72,203" fill="#dc2626" />
+      
+      <!-- Normal arrow pointing toward x > 0 (down/right) -->
+      <line x1="130" y1="95" x2="152" y2="106" stroke="#dc2626" stroke-width="2" />
+      <polygon points="152,102 158,109 149,110" fill="#dc2626" />
+      
+      <!-- Region Labels -->
+      <text x="45" y="60" class="math-sym" fill="#0284c7" font-size="15px">y = 0</text>
+      <text x="45" y="76" font-family="system-ui" font-size="10px" fill="#0369a1">(2x₁ − x₂ + 1 ≤ 0)</text>
+      
+      <text x="175" y="160" class="math-sym" fill="#059669" font-size="15px">y = 1</text>
+      <text x="175" y="176" font-family="system-ui" font-size="10px" fill="#047857">(2x₁ − x₂ + 1 > 0)</text>
+      
+      <!-- Class 0 points (blue/gray dots on y=0 side) -->
+      <circle cx="65" cy="90" r="3.5" fill="#0284c7" /><circle cx="85" cy="70" r="3.5" fill="#0284c7" />
+      <circle cx="105" cy="50" r="3.5" fill="#0284c7" /><circle cx="50" cy="130" r="3.5" fill="#0284c7" />
+      <circle cx="70" cy="150" r="3.5" fill="#0284c7" /><circle cx="95" cy="115" r="3.5" fill="#0284c7" />
+      
+      <!-- Class 1 points (green dots on y=1 side) -->
+      <circle cx="180" cy="90" r="3.5" fill="#059669" /><circle cx="205" cy="110" r="3.5" fill="#059669" />
+      <circle cx="160" cy="140" r="3.5" fill="#059669" /><circle cx="190" cy="155" r="3.5" fill="#059669" />
+      <circle cx="145" cy="175" r="3.5" fill="#059669" /><circle cx="220" cy="140" r="3.5" fill="#059669" />
+      
+      <!-- Boundary Equation Label -->
+      <text x="145" y="235" text-anchor="middle" class="math-sym" fill="#dc2626" font-size="12px">
+        Decision Boundary: 2x₁ − x₂ + 1 = 0  ⇒  x₂ = 2x₁ + 1
+      </text>
+    </g>
+  </g>
+</svg>

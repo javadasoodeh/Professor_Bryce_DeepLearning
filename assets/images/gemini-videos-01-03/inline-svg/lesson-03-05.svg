@@ -1,0 +1,41 @@
+<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .tbl-title { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #0f172a; }
+    .rule-title { font-family: system-ui, sans-serif; font-size: 11px; font-weight: bold; }
+    .rule-body { font-family: system-ui, sans-serif; font-size: 10.5px; fill: #334155; }
+    .math-s { font-family: "DejaVu Serif", "Times New Roman", serif; font-style: italic; font-weight: bold; }
+  </style>
+
+  <!-- Left Decision Box: Activation Function -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="300" height="160" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4" />
+    <text x="150" y="24" text-anchor="middle" class="tbl-title">1. Selecting the Activation Function</text>
+    
+    <rect x="15" y="40" width="270" height="50" rx="4" fill="#f0fdf4" stroke="#86efac" />
+    <text x="25" y="58" class="rule-title" fill="#15803d">• Target Output y is Continuous:</text>
+    <text x="25" y="76" class="rule-body">Select <tspan font-weight="bold">Linear Activation</tspan> (Regression Model)</text>
+    
+    <rect x="15" y="98" width="270" height="50" rx="4" fill="#eff6ff" stroke="#93c5fd" />
+    <text x="25" y="116" class="rule-title" fill="#1e40af">• Target Output y is Binary (0 or 1):</text>
+    <text x="25" y="134" class="rule-body">Select <tspan font-weight="bold">Step Function</tspan> (Classification Model)</text>
+  </g>
+
+  <!-- Right Decision Box: Input Dimensions -->
+  <g transform="translate(355, 20)">
+    <rect x="0" y="0" width="300" height="160" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4" />
+    <text x="150" y="24" text-anchor="middle" class="tbl-title">2. Determining Parameter Count</text>
+    
+    <text x="20" y="52" class="rule-body"><tspan font-weight="bold">Input Dimension dim(x⃗) = n</tspan> requires:</text>
+    <text x="30" y="70" class="rule-body">• Exactly <tspan font-weight="bold" fill="#0284c7">n connection weights</tspan> (w₁, w₂, ..., wₙ)</text>
+    <text x="30" y="86" class="rule-body">• Exactly <tspan font-weight="bold" fill="#dc2626">1 additive bias parameter</tspan> (b)</text>
+    <text x="30" y="104" class="rule-body">• Total Trainable Parameters = <tspan font-weight="bold" fill="#0f172a">n + 1</tspan></text>
+    
+    <rect x="15" y="115" width="270" height="35" rx="4" fill="#fff7ed" stroke="#fdba74" />
+    <text x="25" y="130" font-family="system-ui" font-size="9.5px" fill="#c2410c">
+      <tspan font-weight="bold">Example:</tspan> 4D binary data ⇒ 4 weights + 1 bias = 5 params.
+    </text>
+    <text x="25" y="142" font-family="system-ui" font-size="9.5px" fill="#c2410c">
+      <tspan font-weight="bold">Example:</tspan> 2D continuous data ⇒ 2 weights + 1 bias = 3 params.
+    </text>
+  </g>
+</svg>

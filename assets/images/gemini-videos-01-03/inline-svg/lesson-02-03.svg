@@ -1,0 +1,55 @@
+<svg style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; max-height:200px;" viewbox="0 0 660 210" xmlns="http://www.w3.org/2000/svg">
+<!-- Step 1: M * x -->
+<g transform="translate(25, 25)">
+<rect fill="#f8fafc" height="150" rx="5" stroke="#cbd5e1" stroke-width="1.2" width="135" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="67" y="20">Step 1: Transform</text>
+<!-- Matrix M -->
+<rect fill="#e0f2fe" height="65" stroke="#0284c7" stroke-width="1.2" width="45" x="15" y="32"></rect>
+<text fill="#0369a1" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11px" font-style="italic" font-weight="bold" text-anchor="middle" x="37" y="68">M</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="37" y="112">3 × 5 Matrix</text>
+<!-- Vector x -->
+<rect fill="#dcfce7" height="65" stroke="#16a34a" stroke-width="1.2" width="20" x="75" y="32"></rect>
+<text fill="#15803d" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11px" font-style="italic" font-weight="bold" text-anchor="middle" x="85" y="68">x⃗</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="85" y="112">5-dim</text>
+<text fill="#0284c7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" text-anchor="middle" x="67" y="138">Output: 3-dim vector</text>
+</g>
+<!-- Arrow 1 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="168" x2="192" y1="100" y2="100"></line>
+<polygon fill="#94a3b8" points="192,97 198,100 192,103"></polygon>
+<!-- Step 2: f(M x) -->
+<g transform="translate(200, 25)">
+<rect fill="#f8fafc" height="150" rx="5" stroke="#cbd5e1" stroke-width="1.2" width="125" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="62" y="20">Step 2: Activation</text>
+<rect fill="#fef3c7" height="55" rx="6" stroke="#d97706" stroke-width="1.2" width="55" x="35" y="36"></rect>
+<text fill="#b45309" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="12px" font-style="italic" font-weight="bold" text-anchor="middle" x="62" y="68">f( · )</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="62" y="112">Non-linear map</text>
+<text fill="#b45309" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" text-anchor="middle" x="62" y="138">f(Mx⃗): 3-dim vector</text>
+</g>
+<!-- Arrow 2 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="333" x2="357" y1="100" y2="100"></line>
+<polygon fill="#94a3b8" points="357,97 363,100 357,103"></polygon>
+<!-- Step 3: Difference with y -->
+<g transform="translate(365, 25)">
+<rect fill="#f8fafc" height="150" rx="5" stroke="#cbd5e1" stroke-width="1.2" width="125" x="0" y="0"></rect>
+<text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="62" y="20">Step 3: Residual</text>
+<rect fill="#fee2e2" height="50" stroke="#ef4444" stroke-width="1.2" width="20" x="25" y="38"></rect>
+<text fill="#b91c1c" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="11px" font-style="italic" font-weight="bold" text-anchor="middle" x="35" y="66">y⃗</text>
+<text fill="#475569" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14px" font-weight="bold" text-anchor="middle" x="62" y="68">−</text>
+<rect fill="#fef3c7" height="50" stroke="#d97706" stroke-width="1.2" width="25" x="75" y="38"></rect>
+<text fill="#b45309" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="9px" font-style="italic" font-weight="bold" text-anchor="middle" x="87" y="66">f(Mx⃗)</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="62" y="112">3-dim minus 3-dim</text>
+<text fill="#b91c1c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" text-anchor="middle" x="62" y="138">Residual vector</text>
+</g>
+<!-- Arrow 3 -->
+<line stroke="#94a3b8" stroke-width="1.8" x1="498" x2="522" y1="100" y2="100"></line>
+<polygon fill="#94a3b8" points="522,97 528,100 522,103"></polygon>
+<!-- Step 4: Norm squared -->
+<g transform="translate(530, 25)">
+<rect fill="#f0fdf4" height="150" rx="5" stroke="#86efac" stroke-width="1.2" width="115" x="0" y="0"></rect>
+<text fill="#15803d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5px" font-weight="bold" text-anchor="middle" x="57" y="20">Step 4: L2 Norm</text>
+<circle cx="57" cy="65" fill="#ffffff" r="24" stroke="#16a34a" stroke-width="1.4"></circle>
+<text fill="#16a34a" font-family="'DejaVu Serif', 'Times New Roman', serif" font-size="13px" font-style="italic" font-weight="bold" text-anchor="middle" x="57" y="70">|| · ||²</text>
+<text fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8px" text-anchor="middle" x="57" y="112">Sum of squared diffs</text>
+<text fill="#15803d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9px" font-weight="bold" text-anchor="middle" x="57" y="138">Scalar Loss Output</text>
+</g>
+</svg>

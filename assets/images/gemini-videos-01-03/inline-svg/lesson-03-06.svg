@@ -1,0 +1,21 @@
+<svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
+  <style>
+    .loss-header { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #0f172a; }
+    .eq-large { font-family: "DejaVu Serif", "Times New Roman", serif; font-size: 15px; font-style: italic; font-weight: bold; }
+    .loss-desc { font-family: system-ui, sans-serif; font-size: 10.5px; fill: #334155; }
+  </style>
+
+  <rect x="20" y="15" width="640" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="340" y="38" text-anchor="middle" class="loss-header">The Sum of Squared Errors (SSE) Loss Function</text>
+  
+  <rect x="40" y="52" width="600" height="52" rx="5" fill="#ffffff" stroke="#e2e8f0" />
+  <text x="340" y="84" text-anchor="middle" class="eq-large" fill="#0f172a">
+    L(w₁, ..., wₙ, b) = <tspan font-size="20px" font-style="normal">∑</tspan><tspan font-size="10px" dy="6" font-style="italic">(x⃗, y) ∈ Data Set</tspan><tspan dy="-6"> </tspan> ( y − model(x⃗) )²
+  </text>
+  
+  <!-- Breakdown Callouts -->
+  <text x="60" y="125" class="loss-desc"><tspan font-weight="bold" fill="#059669">• y:</tspan> Expected ground-truth target output</text>
+  <text x="60" y="142" class="loss-desc"><tspan font-weight="bold" fill="#0284c7">• model(x⃗):</tspan> Neuron's scalar prediction for input x⃗</text>
+  <text x="370" y="125" class="loss-desc"><tspan font-weight="bold" fill="#dc2626">• (y − model(x⃗))²:</tspan> Squared penalty ensuring positive errors</text>
+  <text x="370" y="142" class="loss-desc"><tspan font-weight="bold" fill="#0f172a">• Training Objective:</tspan> Adjust parameters to minimize L via <tspan font-weight="bold" fill="#16a34a">Gradient Descent</tspan></text>
+</svg>

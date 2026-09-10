@@ -1,21 +1,24 @@
-<svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:680px; height:auto; display:block; margin:auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px;">
-  <style>
-    .loss-header { font-family: system-ui, sans-serif; font-size: 13px; font-weight: bold; fill: #0f172a; }
-    .eq-large { font-family: "DejaVu Serif", "Times New Roman", serif; font-size: 15px; font-style: italic; font-weight: bold; }
-    .loss-desc { font-family: system-ui, sans-serif; font-size: 10.5px; fill: #334155; }
-  </style>
-
-  <rect x="20" y="15" width="640" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-  <text x="340" y="38" text-anchor="middle" class="loss-header">The Sum of Squared Errors (SSE) Loss Function</text>
-  
-  <rect x="40" y="52" width="600" height="52" rx="5" fill="#ffffff" stroke="#e2e8f0" />
-  <text x="340" y="84" text-anchor="middle" class="eq-large" fill="#0f172a">
-    L(w₁, ..., wₙ, b) = <tspan font-size="20px" font-style="normal">∑</tspan><tspan font-size="10px" dy="6" font-style="italic">(x⃗, y) ∈ Data Set</tspan><tspan dy="-6"> </tspan> ( y − model(x⃗) )²
-  </text>
-  
-  <!-- Breakdown Callouts -->
-  <text x="60" y="125" class="loss-desc"><tspan font-weight="bold" fill="#059669">• y:</tspan> Expected ground-truth target output</text>
-  <text x="60" y="142" class="loss-desc"><tspan font-weight="bold" fill="#0284c7">• model(x⃗):</tspan> Neuron's scalar prediction for input x⃗</text>
-  <text x="370" y="125" class="loss-desc"><tspan font-weight="bold" fill="#dc2626">• (y − model(x⃗))²:</tspan> Squared penalty ensuring positive errors</text>
-  <text x="370" y="142" class="loss-desc"><tspan font-weight="bold" fill="#0f172a">• Training Objective:</tspan> Adjust parameters to minimize L via <tspan font-weight="bold" fill="#16a34a">Gradient Descent</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+  <title>Training a neuron with data and loss</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#0f3d75"/></marker>
+    <style>.bg{fill:#fbfdff}.panel{fill:#f4f9ff;stroke:#a7c9ee;stroke-width:2}.panel2{fill:#fffaf2;stroke:#efc47d;stroke-width:2}.title{font:700 30px Arial,sans-serif;fill:#0b2f5b}.h{font:700 22px Arial,sans-serif;fill:#0b2f5b}.small{font:16px Arial,sans-serif;fill:#37536f}.math{font:26px "Times New Roman",serif;fill:#111827}.maths{font:21px "Times New Roman",serif;fill:#111827}.line{stroke:#0f3d75;stroke-width:3;fill:none}.rtl{direction:rtl;unicode-bidi:bidi-override}</style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="650"/>
+<text x="600" y="48" text-anchor="middle" class="title">آموزش نورون: از داده تا تابع زیان</text>
+<rect x="36" y="82" width="1128" height="520" rx="18" class="panel"/>
+<rect x="70" y="160" width="230" height="185" rx="16" fill="#ffffff" stroke="#c7d8e9" stroke-width="2"/>
+<text x="185" y="198" text-anchor="middle" class="h">داده</text><text x="185" y="240" text-anchor="middle" class="maths">(x⃗, y)</text><text x="185" y="282" text-anchor="middle" class="small rtl">ورودی + جواب درست</text>
+<line x1="300" y1="250" x2="360" y2="250" class="line" marker-end="url(#arrow)"/>
+<rect x="365" y="145" width="260" height="210" rx="16" fill="#ffffff" stroke="#c7d8e9" stroke-width="2"/>
+<text x="495" y="185" text-anchor="middle" class="h">مدل / نورون</text><text x="495" y="230" text-anchor="middle" class="maths">ŷ = Model(x⃗)</text><text x="495" y="273" text-anchor="middle" class="small rtl">با وزن‌ها و بایاس فعلی</text><text x="495" y="315" text-anchor="middle" class="small rtl">یک پیش‌بینی می‌سازیم</text>
+<line x1="625" y1="250" x2="685" y2="250" class="line" marker-end="url(#arrow)"/>
+<rect x="690" y="160" width="190" height="185" rx="16" fill="#ffffff" stroke="#c7d8e9" stroke-width="2"/>
+<text x="785" y="198" text-anchor="middle" class="h">خطا</text><text x="785" y="250" text-anchor="middle" class="math">y − ŷ</text><text x="785" y="292" text-anchor="middle" class="small rtl">چقدر اشتباه کردیم؟</text>
+<line x1="880" y1="250" x2="940" y2="250" class="line" marker-end="url(#arrow)"/>
+<rect x="945" y="145" width="180" height="210" rx="16" class="panel2"/>
+<text x="1035" y="185" text-anchor="middle" class="h">Loss</text><text x="1035" y="235" text-anchor="middle" class="maths">(y − ŷ)²</text><text x="1035" y="280" text-anchor="middle" class="small rtl">برای همه‌ی نمونه‌ها</text><text x="1035" y="315" text-anchor="middle" class="small rtl">جمع می‌کنیم</text>
+<rect x="110" y="400" width="980" height="110" rx="16" fill="#ffffff" stroke="#c7d8e9" stroke-width="2"/>
+<text x="600" y="445" text-anchor="middle" class="maths">L(w₁,…,wₙ,b) = Σ_(x⃗,y)∈D  ( y − Model(x⃗) )²</text><text x="600" y="485" text-anchor="middle" class="small rtl">هدف آموزش: وزن‌ها و بایاس را طوری تغییر دهیم که L کوچک‌تر شود</text>
+<text x="600" y="565" text-anchor="middle" class="small rtl">قدم بعدی درس: چگونه این پارامترها را تغییر دهیم؟  →  Gradient Descent</text>
 </svg>

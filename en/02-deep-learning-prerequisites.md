@@ -1,117 +1,85 @@
-# Deep Learning Prerequisites: Essential Foundations
+# Deep Learning Prerequisites
 
-Computer Science & Mathematical Competencies for Deep Learning
+What background do you need to have success in a course on deep learning?
 
-Prerequisite Curriculum: Data Structures • Linear Algebra • Multivariable Calculus
+Deep learning depends on a number of concepts from computer science and math, so there are prerequisites in both fields. If you have taken courses in **data structures, linear algebra, and multivariable calculus**, you are good to go. But it is worth going into a bit more detail about how each of these will come up and what is important to success in a deep learning class.
 
-Succeeding in deep learning requires synthesizing foundational concepts from both computer science and mathematics. Because deep learning is an upper-level topic, students need a solid grounding in computational problem-solving and key analytical tools.
+## Data structures and programming
 
-The Three Pillars of Preparation
+To begin with, this is upper-level undergraduate computer science, so a decent amount of programming background is assumed. The number-one reason data structures is a prerequisite is to ensure that you have done at least that much programming in the past.
 
-Preparation rests upon three standard university courses: **Data Structures** (programming experience and algorithmic efficiency), **Linear Algebra** (matrix notation, vector operations, and tensors), and **Multivariable Calculus** (gradients and the multivariable chain rule).
+We will also sometimes be interested in **algorithmic efficiency** and related concepts you would have encountered in data structures.
 
-## 1. Master Prerequisite Overview
+![Programming prerequisites and the role of Python and Julia.](../assets/images/gemini-videos-01-03/png-en/lesson-02-01.png)
 
-While the breadth of computer science and mathematics is vast, deep learning relies intensely on a focused subset of topics from each field.
+The lessons will mostly use **pseudocode**, or express computations mathematically. In the assignments, however, you will be programming in both **Python and Julia**.
 
-![Gemini visual 1](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-01.svg)
+Why use two different programming languages? The reason for Python is the availability of the best, most popular deep-learning libraries for this course. Specifically, you will get practice with **TensorFlow and PyTorch** along the way.
 
-Figure 1: Standalone visual recreation of the whiteboard organization: the three prerequisite pillars.
+Julia is the course's choice for translating between mathematics and computation. When we express ideas about deep learning mathematically and then want to write code that implements them, doing that in Julia will make it easiest for us to understand what is going on **under the hood of our neural networks**.
 
-Reassuring Note on Mathematical Scope
+## How much mathematical background do you need?
 
-Although linear algebra and multivariable calculus are prerequisite subjects, deep learning only requires a **small fraction** of the total material taught in those semester-long courses. If you have completed one course but not the other, or if your knowledge is slightly rusty, it is straightforward to catch up on the specific concepts needed during the opening week.
+We will use concepts from linear algebra and multivariable calculus. However, in both cases, the concepts we will use are a **small fraction** of what is generally taught in those courses.
 
-## 2. Pillar I: Data Structures & Programming Ecosystem
+If, for example, you have taken only one of these classes, it should be possible to catch up on the concepts you need from the other relatively quickly, without falling behind at the beginning of the semester.
 
-Because deep learning models require extensive implementation, **Data Structures** acts as the essential benchmark for programming fluency.
+## Linear algebra: being comfortable with matrix notation
 
-* **Programming Proficiency:** Serving as proof that students have accumulated substantial hands-on programming experience.
-* **Algorithmic Efficiency:** Understanding time and space complexity (O(N), O(N²)), memory overhead, and cache-friendly operations, which become critical when processing massive datasets or millions of matrix parameters.
+From linear algebra, the main thing we need is to be comfortable with **matrix notation**.
 
-### Languages Used in the Curriculum
+In deep learning, we will do lots of operations on vectors, matrices, and even higher-dimensional arrays, which we will call **tensors**. We will break those operations down and look at what is happening to individual elements. But we also need to express those operations compactly using matrix and vector notation.
 
-The curriculum intentionally balances mathematical theory with industrial software development:
+![Vectors, matrices and tensors, with the required operations.](../assets/images/gemini-videos-01-03/png-en/lesson-02-02.png)
 
-![Gemini visual 2](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-02.svg)
+You therefore need to be comfortable doing matrix–vector products, applying functions to matrices and vectors, and operations such as **dot products and norms**. The board groups these under vectors—dot products and norms—and matrices—multiplication.
 
-Figure 2: The programming language hierarchy: theoretical formulation, algorithmic implementation, and industrial practice.
+An example of the sorts of operations we might see very soon is:
 
-## 3. Pillar II: Linear Algebra & Tensor Notation
+1.  Multiply a **3 × 5 matrix** by a **five-element vector**.
+2.  Apply some function to the result.
+3.  Take a difference with another **three-element vector**.
+4.  Take a norm.
 
-In deep learning, neural networks operate simultaneously across multidimensional numerical data:
+![Four stages: multiply, apply a function, take the difference, and take the norm.](../assets/images/gemini-videos-01-03/png-en/lesson-02-03.png)
 
-* **Vectors (1D arrays):** Representing feature embeddings, input samples, and bias terms.
-* **Matrices (2D arrays):** Representing linear weight transformations connecting adjacent network layers.
-* **Tensors (Higher-dimensional arrays):** Generalizing arrays to 3D (e.g., color images with dimensions [Channels × Height × Width]), 4D (batches of video frames), and beyond.
+The compact expression on the board is:
 
-While operations can be inspected element by element, deep learning requires expressing transformations **compactly in matrix notation**. Essential operations include matrix-vector multiplication, element-wise non-linear activation, vector subtraction, and computing norms.
+![Squared norm of y minus f of M times x; y and x are vectors.](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-01.svg)
 
-### Step-by-Step Breakdown: The Canonical Linear Algebra Operation
+The written expression includes the **square of the norm**. The explanation walks through the operations without evaluating a numerical example.
 
-|| y⃗ − f(Mx⃗) ||²
+If you are comfortable with all of those operations, that is most of what we need from linear algebra for this class.
 
-![Gemini visual 3](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-03.svg)
+## Multivariable calculus: gradients
 
-Figure 3: Dataflow execution pipeline of the canonical linear algebra operation ||y⃗ − f(Mx⃗)||².
+From multivariable calculus, the key concept we will use all semester is **gradients**.
 
-This expression mirrors a real-world neural network loss function:
+We will need to evaluate the gradient of many different functions. Gradients are made up of **partial derivatives**, so we need to be comfortable taking partial derivatives. Of course, that relies on the rules learned in basic calculus, such as the **product rule and the quotient rule**. The board also includes the **chain rule**.
 
-1. **Matrix Multiplication (M × x⃗):** A weight matrix M with dimensions 3 × 5 multiplies an input vector x⃗ of length 5, linearly transforming the 5-dimensional feature vector into a 3-dimensional vector.
-2. **Activation Function (f(Mx⃗)):** An element-wise non-linear mapping (such as a sigmoid or ReLU) is applied to each of the 3 components.
-3. **Vector Difference (y⃗ − f(Mx⃗)):** The network's 3-dimensional prediction is subtracted from a 3-dimensional ground-truth target vector y⃗, computing the component-wise error (residual).
-4. **Squared Euclidean Norm (|| · ||²):** The magnitude of the error vector is calculated via the squared L2 norm:
+![A gradient contains one partial derivative per component of w.](../assets/images/gemini-videos-01-03/png-en/lesson-02-04.png)
 
-   ||e⃗||² = e₁² + e₂² + e₃²
+The example on the board is:
 
-   This collapses the multidimensional error vector into a single positive real-valued scalar (the loss) that can be minimized.
+![Gradient with respect to vector w of the square of one divided by one minus e raised to the dot product of w and x.](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-02.svg)
 
-## 4. Pillar III: Multivariable Calculus & Gradients
+The sort of operation we will be doing soon is constructing the **gradient vector containing the partial derivative of this function with respect to each element of the vector w**.
 
-Optimization via gradient descent requires evaluating multivariable derivatives across every layer.
+The board uses a minus sign in the denominator, as reproduced here. The gradient is presented as an example of the operation you should be ready to perform; its derivatives are not worked out in this lesson.
 
-* **Gradients (∇):** The vector assembling all first-order partial derivatives of a scalar function. It indicates the direction of greatest functional increase.
-* **Partial Derivatives (∂ / ∂wi):** Quantifying how the output changes when a single parameter is varied while holding all other parameters constant.
-* **Differentiation Rules:** Continuous mastery of the chain rule, product rule, and quotient rule.
+If these operations make sense to you, that is most of what we need from multivariable calculus to do deep learning.
 
-### Deconstructing the Multivariable Target Expression
+## Catching up or refreshing your background
 
-Consider the expression analyzed during the prerequisite overview:
+For either multivariable calculus or linear algebra, if you have not had a full course on the topic—or if you are feeling a bit rusty and want to brush up—there are playlists with videos by **Grant Sanderson** to help you get up to speed.
 
-∇w⃗ [ 1 / (1 − ew⃗ · x⃗) ]²
+Both playlists contain videos for an entire course in the subject. The specific videos most important for the concepts we will actually use are highlighted in the course resources:
 
-![Gemini visual 4](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-04.svg)
+- **Linear algebra:** videos **1, 3, 4, 5, 8, 9, and 13** in the [suggested linear-algebra playlist](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab).
+- **Multivariable calculus:** videos **15, 16, 17, 19, 20, 24, 30, 31, and 32** in the [suggested multivariable-calculus playlist](https://www.youtube.com/watch?v=TrcCbdWwCBc&list=PLSQl0a2vh4HC5feHa6Rc5c0wbRTx56nF7).
 
-Figure 4: Algorithmic decomposition of the multivariable gradient via the Chain Rule.
+If these concepts are unfamiliar, or if it has been a little while since you have used them, go through those videos to make sure you are ready for the activities in the first week of class.
 
-Computing this gradient requires calculating the partial derivative with respect to each weight element wi:
+------------------------------------------------------------------------
 
-1. Let the inner dot product be z = w⃗ · x⃗ = ∑j wj xj. Then ∂z / ∂wi = xi.
-2. Let u = 1 − ez. Then du / dz = −ez = −ew⃗ · x⃗.
-3. The full expression is g(u) = (1/u)² = u−2. Differentiating with respect to u yields:
-
-   dg / du = −2 u−3 = −2 / u³
-4. Applying the **Multivariable Chain Rule** to combine the sub-derivatives:
-
-   ∂g / ∂wi = (dg/du) · (du/dz) · (∂z/∂wi) = [ −2 / (1 − ew⃗·x⃗)³ ] · [ −ew⃗·x⃗ ] · xi = [ 2 ew⃗·x⃗ / (1 − ew⃗·x⃗)³ ] xi
-5. The complete gradient vector ∇w⃗ is constructed by stacking these partial derivatives for every element wi:
-
-   ∇w⃗ g = [ 2 ew⃗·x⃗ / (1 − ew⃗·x⃗)³ ] x⃗
-
-If you are comfortable navigating this sequence of differentiation steps, you possess the multivariable calculus foundation necessary for deep learning.
-
-## 5. Review Resources: Grant Sanderson (3Blue1Brown)
-
-For students needing to refresh their understanding or fill in specific gaps, video playlists by **Grant Sanderson (3Blue1Brown)** are recommended:
-
-#### Essence of Linear Algebra
-
-Focus on core geometric intuition: vector spaces, linear combinations, dot products, matrix transformations, and matrix multiplication.
-
-#### Essence of Calculus
-
-Focus on derivatives, the product rule, the quotient rule, the geometric intuition of the chain rule, and gradients in higher dimensions.
-
-#### Targeted Strategy
-
-Do not watch every lecture end-to-end. Target the specific topics highlighted on the course board to rapidly prepare for Week 1 activities.
+Source: [Deep Learning Prerequisites (DL 02), Professor Bryce](https://www.youtube.com/watch?v=RrM8Tn4-AJE), Davidson CSC 381, Fall 2022.

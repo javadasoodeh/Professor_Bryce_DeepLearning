@@ -1,113 +1,320 @@
 # What Can a Single Neuron Compute?
 
-Before analyzing deep neural networks containing dozens of interconnected layers and millions of parameters, we must zoom in on an individual neuron. Exploring what a single neuron computes reveals the foundational types of models it can express, the geometry of its decision spaces, and the mathematical framework required to train it.
+Neural networks can become very large: many neurons, connections, and layers. But to understand what the whole network is doing, we first zoom in on **just one neuron** and ask:
+
+**What does this one neuron compute, and what kinds of models can we build from that computation?**
 
 ---
 
-## 1. The Anatomy and Computation of a Single Neuron
+## The basic computation of one neuron
 
-A neural network consists of layers of interconnected computational nodes. When isolated, every individual neuron executes a two-stage computation to map input values to a single numerical output:
+Suppose the neuron receives the inputs
 
-1. **Linear Weighted Summation:** Every incoming input $x_i$ is multiplied by its dedicated connection weight $w_i$. These products are summed together along with an additive **bias** term $b$.
-2. **Activation Mapping:** The aggregated scalar sum is passed through an **activation function** $f(\cdot)$ to generate the final scalar output $y$.
+$$
+x_1,\;x_2,\;\ldots,\;x_n
+$$
 
-![Gemini visual 1](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-01.svg)
+and each input has a corresponding weight:
 
-### The Role of the Bias ($b$)
-The bias term acts as an intrinsic intercept. If all input variables are zero ($x_1 = x_2 = \dots = x_n = 0$), the weighted sum $\sum w_i x_i$ collapses to $0$. Without a bias, the neuron would be strictly constrained to pass through the origin. Adding $b$ permits the neuron to evaluate a non-zero value at the origin:
-$$\text{Input Sum} = b + \sum_{i=1}^n w_i x_i$$
-Mathematically, the bias operates like a weight attached to a constant input of $1$, which is why it is depicted as a distinct incoming parameter arrow into the processing unit.
+$$
+w_1,\;w_2,\;\ldots,\;w_n
+$$
 
----
+The neuron multiplies each input by its own weight, adds all those products together, and then adds one more parameter called the **bias**, $b$. The result then goes into the **activation function** $f$.
 
-## 2. The Regression Neuron: Linear Activation
+![The computation of a single neuron](../assets/images/gemini-videos-01-03/png-en/lesson-03-01.png)
 
-When the objective is **regression** (predicting a continuous scalar output), the neuron applies a **linear activation function**:
+So the neuron's computation can be written as:
 
-![Gemini visual 2](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-02.svg)
+$$
+y=f\left(b+\sum_{i=1}^{n}w_i x_i\right)
+$$
 
-### Why Use the Simple Identity Function $y = x$?
-Instead of choosing an arbitrary linear transformation $f(x) = mx + c$, deep learning uses the identity activation $y = x$. The parameters $w_1$ and $b$ already provide complete mathematical freedom to represent any slope and any vertical intercept:
-$$y = m(w_1 x_1 + b) + c = (m w_1) x_1 + (m b + c) = \tilde{w}_1 x_1 + \tilde{b}$$
-Introducing extra scaling or shifting parameters inside the activation function adds redundancy without increasing expressive power.
+There are two stages:
 
-### Multidimensional Input Generalization
-If the neuron receives $n$ independent inputs $(x_1, x_2, \dots, x_n)$ with a linear activation:
-$$y = b + \sum_{i=1}^n w_i x_i = b + \vec{w} \cdot \vec{x}$$
-The neuron evaluates an $n$-dimensional linear mapping producing a continuous 1D scalar output. In two dimensions ($n=2$), the function represents a flat tilted plane $y = w_1 x_1 + w_2 x_2 + b$; in higher dimensions ($n \ge 3$), it defines a linear hyperplane over the input feature space.
+1. First compute the **weighted sum of the inputs plus the bias**.
+2. Then pass that number through the **activation function** to produce the output $y$.
 
----
+The weights determine how much, and in which direction, each input affects the result. The bias is a separate parameter that lets the linear part of the neuron shift instead of depending only on products of inputs and weights.
 
-## 3. The Classification Neuron: Step Activation & Decision Boundaries
-
-When the task is **classification** (assigning inputs to discrete categories such as class $0$ vs. class $1$), the linear sum is routed through a discontinuous **Heaviside step activation function**:
-
-$$x = b + \sum_{i=1}^n w_i x_i, \quad y = \begin{cases} 0 & \text{if } x \le 0 \\ 1 & \text{if } x > 0 \end{cases}$$
-
-Consider a neuron processing two inputs ($x_1, x_2$) with parameters $w_1 = 2$, $w_2 = -1$, and $b = 1$:
-
-![Gemini visual 3](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-03.svg)
-
-### The Geometry of the Decision Boundary
-The boundary separating regions where the neuron outputs $0$ from where it outputs $1$ occurs precisely where the activation argument equals zero:
-$$x_1 w_1 + x_2 w_2 + b = 0$$
-Solving for $x_2$ yields the explicit linear equation of the boundary line in the $(x_1, x_2)$ coordinate plane:
-$$x_2 = \left( -\frac{w_1}{w_2} \right) x_1 + \left( -\frac{b}{w_2} \right)$$
-For our concrete parameters ($w_1 = 2, w_2 = -1, b = 1$):
-$$2x_1 - x_2 + 1 = 0 \implies x_2 = 2x_1 + 1$$
-Every point lying on one side of this line generates an internal sum $x \le 0$ resulting in label $0$, while every point on the opposing side produces $x > 0$ resulting in label $1$.
+The key idea is that this same simple structure can behave differently depending on the activation function. We will use this one neuron first for **Regression** and then for **Classification**.
 
 ---
 
-## 4. Dimensional Progression of Decision Boundaries
+## A neuron for Regression
 
-The geometric nature of the classification decision boundary scales systematically with the dimensionality of the input vector $\vec{x}$:
+Start with just one input, $x_1$. The weighted sum plus bias is:
 
-![Gemini visual 4](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-04.svg)
+$$
+x=x_1w_1+b
+$$
 
-* **1-Dimensional Inputs ($x_1$):** The feature space is a 1D line; the decision boundary is a single **point** $x_1 = -\frac{b}{w_1}$.
-* **2-Dimensional Inputs ($x_1, x_2$):** The feature space is a 2D plane; the boundary is a **line** $w_1 x_1 + w_2 x_2 + b = 0$.
-* **3-Dimensional Inputs ($x_1, x_2, x_3$):** The feature space is a 3D volume; the boundary is a **plane** $w_1 x_1 + w_2 x_2 + w_3 x_3 + b = 0$.
-* **$n$-Dimensional Inputs ($\vec{x} \in \mathbb{R}^n$):** The boundary is an **$(n-1)$-dimensional flat affine hyperplane** that bisects $n$-dimensional space into two half-spaces.
+Now choose a completely linear activation function:
+
+$$
+y=x
+$$
+
+Therefore:
+
+$$
+y=x_1w_1+b
+$$
+
+This is exactly the equation of a straight line.
+
+![A regression neuron and linear example](../assets/images/gemini-videos-01-03/png-en/lesson-03-02.png)
+
+In this case, **the weight $w_1$ determines the slope of the line**, and **the bias $b$ determines where the line crosses the $y$-axis**.
+
+For example, if
+
+$$
+w_1=3
+$$
+
+and
+
+$$
+b=-2
+$$
+
+then the neuron computes:
+
+$$
+y=3x_1-2
+$$
+
+So when we draw this relationship, we get a straight line with slope $3$ and intercept $-2$.
+
+That is why a single neuron with a linear activation function, in the simplest case, does what we expect from a **linear regression model**.
+
+If there are more inputs, the computation is the same:
+
+$$
+y=b+w_1x_1+w_2x_2+\cdots+w_nx_n
+$$
+
+We simply have one weight for each input component. The output is still a numerical value.
 
 ---
 
-## 5. How to Train a Neuron: Data, Model Selection & Loss Functions
+## The same neuron for Classification
 
-### Supervised Datasets
-Supervised machine learning operates on a dataset composed of empirical input-output examples:
-$$\mathcal{D} = \big\{ (\vec{x}^{(1)}, y^{(1)}), \; (\vec{x}^{(2)}, y^{(2)}), \; \dots, \; (\vec{x}^{(N)}, y^{(N)}) \big\}$$
-where each example consists of an input feature vector $\vec{x}$ and the corresponding ground-truth target output $y$.
+Now keep the weighted-sum computation, but change the activation function.
 
-### Model Topology Determination Rules
-The physical format and dimensional structure of the dataset dictate the neuron's configuration:
+With two inputs:
 
-![Gemini visual 5](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-05.svg)
+$$
+x=x_1w_1+x_2w_2+b
+$$
 
-### The Loss Function: Quantifying Model Error
-Training is the search for parameter values $(w_1, w_2, \dots, w_n, b)$ that make the neuron's predictions match the training data as closely as possible.
+This time, instead of setting the output directly equal to $x$, use a **step function**:
 
-To evaluate how poorly the model performs with its current parameters, we establish an objective **Loss Function** $L(w_1, \dots, w_n, b)$:
-* In **Regression**, the error for each point is the vertical distance (residual) between the predicted value and the ground truth:
-  $$\text{Residual} = y^{(i)} - \text{model}(\vec{x}^{(i)})$$
-* In **Classification**, the model incurs error whenever a sample point falls on the incorrect side of the decision boundary.
+$$
+y=
+\begin{cases}
+0 & x\le 0\\
+1 & x>0
+\end{cases}
+$$
 
-![Gemini visual 6](../assets/images/gemini-videos-01-03/inline-svg/lesson-03-06.svg)
+![A classification neuron with a step function](../assets/images/gemini-videos-01-03/png-en/lesson-03-03.png)
 
-By computing the squared difference $(y - \text{model}(\vec{x}))^2$ for every training sample and summing these penalties, the loss function compresses the model's global error across the entire dataset into a single scalar value. 
+The neuron first computes a number. If that number is zero or negative, the output is $0$; if it is positive, the output is $1$.
 
-The central goal of deep learning is to iteratively adjust the weights and bias in the direction that lowers this loss value—a procedure executed through **Gradient Descent**.
+So the same neuron that produced a continuous value for Regression can now decide between **two classes** simply by changing the activation function.
 
 ---
 
-## 6. Summary Comparison
+## Where is the boundary between class 0 and class 1?
 
-| Attribute | Regression Neuron | Classification Neuron |
-| :--- | :--- | :--- |
-| **Activation Function** | Linear Identity ($y = x$) | Step Function ($0$ if $x \le 0$, $1$ if $x > 0$) |
-| **Output Type** | Continuous real number ($y \in \mathbb{R}$) | Discrete binary category ($y \in \{0, 1\}$) |
-| **Output Geometry** | Continuous slope / response surface | Discrete partitioned regions ($y = 0$ vs. $y = 1$) |
-| **Boundary Structure** | None (evaluates a continuous plane) | $(n-1)$-dimensional hyperplane ($b + \sum w_i x_i = 0$) |
-| **Trainable Parameters** | $n$ weights $+ 1$ bias ($n + 1$ total) | $n$ weights $+ 1$ bias ($n + 1$ total) |
-| **Error Formulation** | Distance from point to line/surface ($y - \hat{y}$) | Misclassified points placed in the wrong region |
-| **Optimization Goal** | Minimize Sum of Squared Errors: $\sum (y - \hat{y})^2$ | Minimize classification loss / boundary violations |
+The step function changes its output exactly where its input crosses zero. So the decision boundary is where:
+
+$$
+x_1w_1+x_2w_2+b=0
+$$
+
+Use the example from the lesson:
+
+$$
+w_1=2,\qquad w_2=-1,\qquad b=1
+$$
+
+Then the value before the activation function is:
+
+$$
+x=2x_1-x_2+1
+$$
+
+Set that expression equal to zero to find the decision boundary:
+
+$$
+2x_1-x_2+1=0
+$$
+
+which can also be written as
+
+$$
+x_2=2x_1+1
+$$
+
+![The decision boundary for the two-input example](../assets/images/gemini-videos-01-03/png-en/lesson-03-04.png)
+
+This line divides the input plane $(x_1,x_2)$ into two parts.
+
+On one side of the line:
+
+$$
+2x_1-x_2+1\le 0
+$$
+
+and therefore:
+
+$$
+y=0
+$$
+
+On the other side:
+
+$$
+2x_1-x_2+1>0
+$$
+
+and therefore:
+
+$$
+y=1
+$$
+
+So the line is not drawn randomly through the data; **its position comes directly from the weights and the bias.**
+
+If the weights or bias change, the location of this line changes. Learning the weights and bias in this Classification model means learning where the boundary between the two classes should be.
+
+---
+
+## What if there is only one input?
+
+The same idea is even simpler in one dimension.
+
+Suppose:
+
+$$
+x=2x_1+1
+$$
+
+The decision boundary is where:
+
+$$
+x=0
+$$
+
+So:
+
+$$
+2x_1+1=0
+$$
+
+and therefore:
+
+$$
+x_1=-0.5
+$$
+
+![A one-dimensional decision boundary](../assets/images/gemini-videos-01-03/png-en/lesson-03-05.png)
+
+In two dimensions, the decision boundary was a **line**. Here, because we have only one input axis, the decision boundary is just a **point** on that axis.
+
+The two sides of that point belong to the two different outputs of the step function. The idea is the same: the boundary lies wherever the weighted sum plus bias becomes zero.
+
+This example also shows that the number of input components determines how many weights the neuron needs. If the input vector has $n$ components, the neuron needs $n$ weights.
+
+---
+
+## The main question: where do the weights and bias come from?
+
+In the examples above, we chose the weights and bias ourselves:
+
+$$
+w_1=3,\; b=-2
+$$
+
+or
+
+$$
+w_1=2,\; w_2=-1,\; b=1
+$$
+
+But in a real problem, we do not want to guess these numbers by hand. We want the model to **learn them from data**.
+
+Suppose a dataset contains examples of the form:
+
+$$
+(\vec{x},y)
+$$
+
+For each example:
+
+- $\vec{x}$ is the input;
+- $y$ is the correct answer, or target, for that input.
+
+Using its current weights and bias, the neuron makes a prediction for the same input:
+
+$$
+\hat y=\text{Model}(\vec{x})
+$$
+
+Now we can compare the model's prediction with the true answer.
+
+---
+
+## Loss Function: how wrong is the model?
+
+For training, we need a number that tells us **how wrong the model is on the dataset** with its current parameters. That number is the **Loss Function**.
+
+For each example, the difference between the true answer and the model's prediction is:
+
+$$
+y-\text{Model}(\vec{x})
+$$
+
+In this example, square that difference:
+
+$$
+\left(y-\text{Model}(\vec{x})\right)^2
+$$
+
+Then add it over all examples in the dataset:
+
+![From data to prediction, error, and the loss function](../assets/images/gemini-videos-01-03/png-en/lesson-03-06.png)
+
+$$
+L(w_1,\ldots,w_n,b)
+=
+\sum_{(\vec{x},y)\in D}
+\left(
+y-\text{Model}(\vec{x})
+\right)^2
+$$
+
+Notice how the loss is written:
+
+$$
+L(w_1,\ldots,w_n,b)
+$$
+
+The Loss depends on the weights and the bias.
+
+If we change the weights and bias, the model prediction changes. When the prediction changes, the difference from the true answer changes, so the Loss changes too.
+
+So training the neuron can be viewed as:
+
+**Find values of $w_1,\ldots,w_n,b$ that make the Loss as small as possible.**
+
+The smaller the Loss, the better the model's predictions match the training data.
+
+One important question remains:
+
+**How do we change the weights and bias so that the Loss decreases?**
+
+That question leads to the next topic: **Gradient Descent**.

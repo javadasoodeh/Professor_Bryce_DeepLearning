@@ -1,0 +1,311 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>یک نورون منفرد چه چیزی می‌تواند محاسبه کند؟</title><style>*{box-sizing:border-box}
+body{font:17px/2.15 Tahoma,"Noto Naskh Arabic",sans-serif;color:#24313b;background:#f6f7f7;margin:0;direction:rtl}
+article{max-width:960px;margin:auto;background:#fff;padding:44px}
+h1{font-size:34px;line-height:1.65;color:#11645e}
+h2{margin-top:2em;font-size:24px;line-height:1.7;color:#11645e}
+p{margin:1em 0}
+img{display:block;max-width:100%;height:auto;margin:1.2em auto;border-radius:6px}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;margin:1.2em auto;text-align:center;direction:ltr;unicode-bidi:isolate}
+math[display="inline"]{direction:ltr;unicode-bidi:isolate}
+a{color:#126a9a}
+hr{border:0;border-top:1px solid #ddd;margin-top:45px}
+@media(max-width:600px){article{padding:20px}body{font-size:15px}h1{font-size:27px}h2{font-size:21px}}
+@media print{body{background:#fff}article{padding:0}h2,img,math{break-inside:avoid}}</style></head><body><article><h1 id="یک-نورون-منفرد-چه-چیزی-میتواند-محاسبه-کند">یک نورون منفرد چه
+چیزی می‌تواند محاسبه کند؟</h1>
+<p>شبکه‌های عصبی می‌توانند خیلی بزرگ شوند؛ تعداد زیادی نورون، اتصال و
+لایه. اما برای فهمیدن اینکه کل این شبکه چه کاری انجام می‌دهد، اول روی
+<strong>فقط یک نورون</strong> زوم می‌کنیم و می‌پرسیم:</p>
+<p><strong>این یک نورون چه چیزی را محاسبه می‌کند، و با همین محاسبه چه نوع
+مدل‌هایی می‌توان ساخت؟</strong></p>
+<hr />
+<h2 id="محاسبهی-پایهی-یک-نورون">محاسبه‌ی پایه‌ی یک نورون</h2>
+<p>فرض کنید نورون ورودی‌های</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>…</mi><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+x_1,\;x_2,\;\ldots,\;x_n
+</annotation></semantics></math></p>
+<p>را دریافت می‌کند. برای هر ورودی یک وزن متناظر داریم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>…</mi><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+w_1,\;w_2,\;\ldots,\;w_n
+</annotation></semantics></math></p>
+<p>نورون هر ورودی را در وزن خودش ضرب می‌کند، همه‌ی حاصل‌ضرب‌ها را با هم جمع
+می‌کند و در پایان یک پارامتر دیگر به نام <strong>bias</strong> یا
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+را نیز اضافه می‌کند. سپس حاصل وارد <strong>تابع فعال‌سازی</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+می‌شود.</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-01.png"
+alt="محاسبه یک نورون منفرد" />
+<figcaption aria-hidden="true">محاسبه یک نورون منفرد</figcaption>
+</figure>
+<p>پس محاسبه‌ی نورون را می‌توان به این صورت نوشت:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>w</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+y=f\left(b+\sum_{i=1}^{n}w_i x_i\right)
+</annotation></semantics></math></p>
+<p>یعنی دو مرحله داریم:</p>
+<ol type="1">
+<li>ابتدا <strong>جمع وزن‌دار ورودی‌ها به‌همراه bias</strong> محاسبه
+می‌شود.</li>
+<li>سپس آن عدد از <strong>تابع فعال‌سازی</strong> عبور می‌کند و خروجی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+را می‌سازد.</li>
+</ol>
+<p>وزن‌ها تعیین می‌کنند هر ورودی چقدر و در چه جهتی روی نتیجه اثر داشته
+باشد. bias نیز یک پارامتر جداست که به نورون اجازه می‌دهد خروجیِ بخش خطی
+فقط به حاصل‌ضرب ورودی‌ها و وزن‌ها وابسته نباشد.</p>
+<p>نکته‌ی اصلی این است که همین ساختار ساده، بسته به تابع فعال‌سازی‌ای که
+انتخاب می‌کنیم، می‌تواند رفتارهای متفاوتی داشته باشد. در ادامه همین یک
+نورون را ابتدا به‌عنوان <strong>Regression</strong> و بعد به‌عنوان
+<strong>Classification</strong> می‌بینیم.</p>
+<hr />
+<h2 id="یک-نورون-برای-regression">یک نورون برای Regression</h2>
+<p>برای شروع، فقط یک ورودی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>
+در نظر بگیرید. جمع وزن‌دار به‌همراه bias برابر است با:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+x=x_1w_1+b
+</annotation></semantics></math></p>
+<p>حالا تابع فعال‌سازی را کاملاً خطی انتخاب می‌کنیم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">
+y=x
+</annotation></semantics></math></p>
+<p>در نتیجه:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+y=x_1w_1+b
+</annotation></semantics></math></p>
+<p>این دقیقاً معادله‌ی یک خط است.</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-02.png"
+alt="نورون رگرسیون و مثال خطی" />
+<figcaption aria-hidden="true">نورون رگرسیون و مثال خطی</figcaption>
+</figure>
+<p>در این حالت، <strong>وزن
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mn>1</mn></msub><annotation encoding="application/x-tex">w_1</annotation></semantics></math>
+شیب خط</strong> را مشخص می‌کند و <strong>bias یعنی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+محل تقاطع خط با محور
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></strong>
+را تعیین می‌کند.</p>
+<p>برای مثال، اگر</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">
+w_1=3
+</annotation></semantics></math></p>
+<p>و</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+b=-2
+</annotation></semantics></math></p>
+<p>باشد، نورون محاسبه می‌کند:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+y=3x_1-2
+</annotation></semantics></math></p>
+<p>پس اگر این رابطه را روی نمودار رسم کنیم، یک خط مستقیم با شیب
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+و عرض از مبدأ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>
+داریم.</p>
+<p>به همین دلیل یک نورون منفرد با فعال‌سازی خطی، در ساده‌ترین حالت، همان
+کاری را انجام می‌دهد که از یک <strong>مدل رگرسیون خطی</strong> انتظار
+داریم.</p>
+<p>اگر ورودی‌های بیشتری داشته باشیم، محاسبه همان است:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>b</mi><mo>+</mo><msub><mi>w</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>w</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+y=b+w_1x_1+w_2x_2+\cdots+w_nx_n
+</annotation></semantics></math></p>
+<p>فقط به‌جای یک وزن، به تعداد مؤلفه‌های ورودی وزن خواهیم داشت. خروجی
+همچنان یک مقدار عددی است.</p>
+<hr />
+<h2 id="همان-نورون-برای-classification">همان نورون برای
+Classification</h2>
+<p>حالا محاسبه‌ی جمع وزن‌دار را نگه می‌داریم، اما تابع فعال‌سازی را عوض
+می‌کنیم.</p>
+<p>برای دو ورودی داریم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>w</mi><mn>2</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+x=x_1w_1+x_2w_2+b
+</annotation></semantics></math></p>
+<p>ولی این‌بار به‌جای اینکه خروجی را مستقیماً برابر
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+قرار دهیم، از یک <strong>تابع پله‌ای</strong> استفاده می‌کنیم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>≤</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mn>0</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+y=
+\begin{cases}
+0 &amp; x\le 0\\
+1 &amp; x&gt;0
+\end{cases}
+</annotation></semantics></math></p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-03.png"
+alt="نورون طبقه‌بندی با تابع پله‌ای" />
+<figcaption aria-hidden="true">نورون طبقه‌بندی با تابع پله‌ای</figcaption>
+</figure>
+<p>پس نورون اول یک عدد محاسبه می‌کند. اگر آن عدد صفر یا منفی باشد، خروجی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+است؛ اگر مثبت باشد، خروجی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+می‌شود.</p>
+<p>یعنی همان نورونی که با فعال‌سازی خطی یک مقدار پیوسته برای Regression
+تولید می‌کرد، حالا با تغییر تابع فعال‌سازی می‌تواند بین <strong>دو
+کلاس</strong> تصمیم بگیرد.</p>
+<hr />
+<h2 id="مرز-بین-کلاس-۰-و-کلاس-۱-کجاست">مرز بین کلاس ۰ و کلاس ۱
+کجاست؟</h2>
+<p>تابع پله‌ای درست در نقطه‌ای خروجی‌اش را عوض می‌کند که مقدار واردشده به آن
+از صفر عبور کند. بنابراین مرز تصمیم جایی است که:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>w</mi><mn>2</mn></msub><mo>+</mo><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+x_1w_1+x_2w_2+b=0
+</annotation></semantics></math></p>
+<p>مثال این درس را در نظر بگیرید:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+w_1=2,\qquad w_2=-1,\qquad b=1
+</annotation></semantics></math></p>
+<p>در نتیجه مقدار قبل از تابع فعال‌سازی می‌شود:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x=2x_1-x_2+1
+</annotation></semantics></math></p>
+<p>و مرز تصمیم را با صفر قرار دادن همین عبارت پیدا می‌کنیم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1=0
+</annotation></semantics></math></p>
+<p>که می‌توان آن را به شکل</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x_2=2x_1+1
+</annotation></semantics></math></p>
+<p>نوشت.</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-04.png"
+alt="مرز تصمیم برای مثال دو ورودی" />
+<figcaption aria-hidden="true">مرز تصمیم برای مثال دو ورودی</figcaption>
+</figure>
+<p>این خط، صفحه‌ی ورودی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x_1,x_2)</annotation></semantics></math>
+را به دو قسمت تقسیم می‌کند.</p>
+<p>در یک سمت خط:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1\le 0
+</annotation></semantics></math></p>
+<p>و بنابراین:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+y=0
+</annotation></semantics></math></p>
+<p>در سمت دیگر:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1&gt;0
+</annotation></semantics></math></p>
+<p>و بنابراین:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+y=1
+</annotation></semantics></math></p>
+<p>پس آن خط به‌صورت تصادفی روی داده‌ها کشیده نشده است؛ <strong>موقعیت خط
+مستقیماً از وزن‌ها و bias به دست می‌آید.</strong></p>
+<p>اگر وزن‌ها یا bias تغییر کنند، محل این خط نیز تغییر می‌کند. بنابراین
+یادگرفتن وزن‌ها و bias در یک مدل Classification یعنی یادگرفتن اینکه مرز
+جداسازی کلاس‌ها کجا قرار بگیرد.</p>
+<hr />
+<h2 id="اگر-فقط-یک-ورودی-داشته-باشیم">اگر فقط یک ورودی داشته باشیم</h2>
+<p>همین ایده را در یک بعد ساده‌تر می‌توان دید.</p>
+<p>فرض کنید:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x=2x_1+1
+</annotation></semantics></math></p>
+<p>مرز تصمیم جایی است که:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+x=0
+</annotation></semantics></math></p>
+<p>پس:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1+1=0
+</annotation></semantics></math></p>
+<p>و در نتیجه:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">
+x_1=-0.5
+</annotation></semantics></math></p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-05.png"
+alt="مرز تصمیم در یک بعد" />
+<figcaption aria-hidden="true">مرز تصمیم در یک بعد</figcaption>
+</figure>
+<p>در دو بعد، مرز تصمیم یک <strong>خط</strong> بود. اینجا که فقط یک محور
+ورودی داریم، مرز تصمیم فقط یک <strong>نقطه</strong> روی آن محور است.</p>
+<p>دو طرف این نقطه به دو خروجی متفاوت تابع پله‌ای تعلق دارند. ایده همان
+است: مرز جایی قرار می‌گیرد که جمع وزن‌دار به‌همراه bias برابر صفر
+می‌شود.</p>
+<p>این مثال همچنین نشان می‌دهد که تعداد مؤلفه‌های ورودی تعیین می‌کند نورون
+چند وزن لازم دارد. اگر بردار ورودی
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+مؤلفه داشته باشد، نورون برای آن‌ها
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+وزن خواهد داشت.</p>
+<hr />
+<h2 id="حالا-مسئلهی-اصلی-این-وزنها-و-bias-را-از-کجا-بیاوریم">حالا مسئله‌ی
+اصلی: این وزن‌ها و bias را از کجا بیاوریم؟</h2>
+<p>در مثال‌های قبلی، وزن‌ها و bias را خودمان انتخاب کردیم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>b</mi><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+w_1=3,\; b=-2
+</annotation></semantics></math></p>
+<p>یا</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+w_1=2,\; w_2=-1,\; b=1
+</annotation></semantics></math></p>
+<p>اما در یک مسئله‌ی واقعی نمی‌خواهیم این اعداد را دستی حدس بزنیم.
+می‌خواهیم مدل آن‌ها را از <strong>داده</strong> یاد بگیرد.</p>
+<p>فرض کنید یک مجموعه‌داده شامل مثال‌هایی از شکل زیر داریم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+(\vec{x},y)
+</annotation></semantics></math></p>
+<p>یعنی برای هر نمونه:</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec{x}</annotation></semantics></math>
+ورودی است؛</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+جواب درست یا target همان ورودی است.</li>
+</ul>
+<p>نورون با وزن‌ها و bias فعلی خودش برای همان ورودی یک پیش‌بینی
+می‌سازد:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\hat y=\text{Model}(\vec{x})
+</annotation></semantics></math></p>
+<p>اکنون می‌توانیم پیش‌بینی مدل را با جواب واقعی مقایسه کنیم.</p>
+<hr />
+<h2 id="loss-function-مدل-چقدر-اشتباه-کرده-است">Loss Function: مدل چقدر
+اشتباه کرده است؟</h2>
+<p>برای آموزش، به یک عدد نیاز داریم که نشان دهد مدل با پارامترهای فعلی
+<strong>چقدر روی مجموعه‌داده اشتباه می‌کند</strong>. این همان <strong>Loss
+Function</strong> است.</p>
+<p>برای هر نمونه، اختلاف بین جواب واقعی و پیش‌بینی مدل برابر است با:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+y-\text{Model}(\vec{x})
+</annotation></semantics></math></p>
+<p>در مثالی که اینجا استفاده می‌شود، این اختلاف را به توان دو
+می‌رسانیم:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">
+\left(y-\text{Model}(\vec{x})\right)^2
+</annotation></semantics></math></p>
+<p>و سپس آن را برای همه‌ی نمونه‌های مجموعه‌داده جمع می‌کنیم:</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-fa/lesson-03-06.png"
+alt="از داده تا پیش‌بینی، خطا و تابع زیان" />
+<figcaption aria-hidden="true">از داده تا پیش‌بینی، خطا و تابع
+زیان</figcaption>
+</figure>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>D</mi></mrow></munder><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+L(w_1,\ldots,w_n,b)=
+\sum_{(\vec{x},y)\in D}
+\left(y-\text{Model}(\vec{x})\right)^2
+</annotation></semantics></math></p>
+<p>به نحوه‌ی نوشتن تابع زیان دقت کنید:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+L(w_1,\ldots,w_n,b)
+</annotation></semantics></math></p>
+<p>یعنی مقدار Loss به وزن‌ها و bias وابسته است.</p>
+<p>اگر وزن‌ها و bias را تغییر دهیم، پیش‌بینی مدل تغییر می‌کند؛ وقتی پیش‌بینی
+تغییر کند، اختلاف آن با جواب واقعی نیز تغییر می‌کند و در نتیجه مقدار Loss
+هم تغییر خواهد کرد.</p>
+<p>پس آموزش نورون را می‌توان این‌طور دید:</p>
+<p><strong>مقادیر
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">w_1,\ldots,w_n,b</annotation></semantics></math>
+را پیدا کنیم که Loss را تا جای ممکن کوچک کنند.</strong></p>
+<p>هرچه Loss کوچک‌تر باشد، پیش‌بینی‌های مدل با داده‌ی آموزشی بهتر جور
+هستند.</p>
+<p>در اینجا هنوز سؤال مهمی باقی می‌ماند:</p>
+<p><strong>چطور وزن‌ها و bias را تغییر بدهیم تا Loss کاهش پیدا
+کند؟</strong></p>
+<p>این سؤال ما را به موضوع بعدی، یعنی <strong>Gradient Descent</strong>،
+می‌رساند.</p></article></body></html>

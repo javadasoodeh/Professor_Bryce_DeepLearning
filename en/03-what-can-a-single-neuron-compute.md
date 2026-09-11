@@ -289,12 +289,9 @@ Then add it over all examples in the dataset:
 ![From data to prediction, error, and the loss function](../assets/images/gemini-videos-01-03/png-en/lesson-03-06.png)
 
 $$
-L(w_1,\ldots,w_n,b)
-=
+L(w_1,\ldots,w_n,b)=
 \sum_{(\vec{x},y)\in D}
-\left(
-y-\text{Model}(\vec{x})
-\right)^2
+\left(y-\text{Model}(\vec{x})\right)^2
 $$
 
 Notice how the loss is written:

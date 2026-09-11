@@ -1,1 +1,0 @@
-Lesson 03 English PNG assets.

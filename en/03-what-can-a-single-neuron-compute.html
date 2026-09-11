@@ -1,0 +1,316 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>What Can a Single Neuron Compute?</title><style>*{box-sizing:border-box}
+body{font:18px/1.7 system-ui,sans-serif;color:#24313b;background:#f6f7f7;margin:0}
+article{max-width:960px;margin:auto;background:#fff;padding:44px}
+h1{font-size:38px;line-height:1.2;color:#11645e}
+h2{margin-top:2em;font-size:25px;color:#11645e}
+img{display:block;max-width:100%;height:auto;margin:1.2em auto;border-radius:6px}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;margin:1.2em auto;text-align:center;direction:ltr;unicode-bidi:isolate}
+math[display="inline"]{direction:ltr;unicode-bidi:isolate}
+a{color:#126a9a}
+hr{border:0;border-top:1px solid #ddd;margin-top:45px}
+@media(max-width:600px){article{padding:20px}body{font-size:16px}h1{font-size:30px}h2{font-size:22px}}
+@media print{body{background:#fff}article{padding:0}h2,img,math{break-inside:avoid}}</style></head><body><article><h1 id="what-can-a-single-neuron-compute">What Can a Single Neuron
+Compute?</h1>
+<p>Neural networks can become very large: many neurons, connections, and
+layers. But to understand what the whole network is doing, we first zoom
+in on <strong>just one neuron</strong> and ask:</p>
+<p><strong>What does this one neuron compute, and what kinds of models
+can we build from that computation?</strong></p>
+<hr />
+<h2 id="the-basic-computation-of-one-neuron">The basic computation of
+one neuron</h2>
+<p>Suppose the neuron receives the inputs</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>…</mi><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+x_1,\;x_2,\;\ldots,\;x_n
+</annotation></semantics></math></p>
+<p>and each input has a corresponding weight:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>…</mi><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+w_1,\;w_2,\;\ldots,\;w_n
+</annotation></semantics></math></p>
+<p>The neuron multiplies each input by its own weight, adds all those
+products together, and then adds one more parameter called the
+<strong>bias</strong>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+The result then goes into the <strong>activation function</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-01.png"
+alt="The computation of a single neuron" />
+<figcaption aria-hidden="true">The computation of a single
+neuron</figcaption>
+</figure>
+<p>So the neuron’s computation can be written as:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>w</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+y=f\left(b+\sum_{i=1}^{n}w_i x_i\right)
+</annotation></semantics></math></p>
+<p>There are two stages:</p>
+<ol type="1">
+<li>First compute the <strong>weighted sum of the inputs plus the
+bias</strong>.</li>
+<li>Then pass that number through the <strong>activation
+function</strong> to produce the output
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</li>
+</ol>
+<p>The weights determine how much, and in which direction, each input
+affects the result. The bias is a separate parameter that lets the
+linear part of the neuron shift instead of depending only on products of
+inputs and weights.</p>
+<p>The key idea is that this same simple structure can behave
+differently depending on the activation function. We will use this one
+neuron first for <strong>Regression</strong> and then for
+<strong>Classification</strong>.</p>
+<hr />
+<h2 id="a-neuron-for-regression">A neuron for Regression</h2>
+<p>Start with just one input,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math>.
+The weighted sum plus bias is:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+x=x_1w_1+b
+</annotation></semantics></math></p>
+<p>Now choose a completely linear activation function:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">
+y=x
+</annotation></semantics></math></p>
+<p>Therefore:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+y=x_1w_1+b
+</annotation></semantics></math></p>
+<p>This is exactly the equation of a straight line.</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-02.png"
+alt="A regression neuron and linear example" />
+<figcaption aria-hidden="true">A regression neuron and linear
+example</figcaption>
+</figure>
+<p>In this case, <strong>the weight
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mn>1</mn></msub><annotation encoding="application/x-tex">w_1</annotation></semantics></math>
+determines the slope of the line</strong>, and <strong>the bias
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+determines where the line crosses the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis</strong>.</p>
+<p>For example, if</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">
+w_1=3
+</annotation></semantics></math></p>
+<p>and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+b=-2
+</annotation></semantics></math></p>
+<p>then the neuron computes:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+y=3x_1-2
+</annotation></semantics></math></p>
+<p>So when we draw this relationship, we get a straight line with slope
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+and intercept
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>.</p>
+<p>That is why a single neuron with a linear activation function, in the
+simplest case, does what we expect from a <strong>linear regression
+model</strong>.</p>
+<p>If there are more inputs, the computation is the same:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>b</mi><mo>+</mo><msub><mi>w</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>w</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">
+y=b+w_1x_1+w_2x_2+\cdots+w_nx_n
+</annotation></semantics></math></p>
+<p>We simply have one weight for each input component. The output is
+still a numerical value.</p>
+<hr />
+<h2 id="the-same-neuron-for-classification">The same neuron for
+Classification</h2>
+<p>Now keep the weighted-sum computation, but change the activation
+function.</p>
+<p>With two inputs:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>w</mi><mn>2</mn></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">
+x=x_1w_1+x_2w_2+b
+</annotation></semantics></math></p>
+<p>This time, instead of setting the output directly equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+use a <strong>step function</strong>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>≤</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>&gt;</mo><mn>0</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+y=
+\begin{cases}
+0 &amp; x\le 0\\
+1 &amp; x&gt;0
+\end{cases}
+</annotation></semantics></math></p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-03.png"
+alt="A classification neuron with a step function" />
+<figcaption aria-hidden="true">A classification neuron with a step
+function</figcaption>
+</figure>
+<p>The neuron first computes a number. If that number is zero or
+negative, the output is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>;
+if it is positive, the output is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.</p>
+<p>So the same neuron that produced a continuous value for Regression
+can now decide between <strong>two classes</strong> simply by changing
+the activation function.</p>
+<hr />
+<h2 id="where-is-the-boundary-between-class-0-and-class-1">Where is the
+boundary between class 0 and class 1?</h2>
+<p>The step function changes its output exactly where its input crosses
+zero. So the decision boundary is where:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>w</mi><mn>2</mn></msub><mo>+</mo><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+x_1w_1+x_2w_2+b=0
+</annotation></semantics></math></p>
+<p>Use the example from the lesson:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+w_1=2,\qquad w_2=-1,\qquad b=1
+</annotation></semantics></math></p>
+<p>Then the value before the activation function is:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x=2x_1-x_2+1
+</annotation></semantics></math></p>
+<p>Set that expression equal to zero to find the decision boundary:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1=0
+</annotation></semantics></math></p>
+<p>which can also be written as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x_2=2x_1+1
+</annotation></semantics></math></p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-04.png"
+alt="The decision boundary for the two-input example" />
+<figcaption aria-hidden="true">The decision boundary for the two-input
+example</figcaption>
+</figure>
+<p>This line divides the input plane
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x_1,x_2)</annotation></semantics></math>
+into two parts.</p>
+<p>On one side of the line:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1\le 0
+</annotation></semantics></math></p>
+<p>and therefore:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+y=0
+</annotation></semantics></math></p>
+<p>On the other side:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1-x_2+1&gt;0
+</annotation></semantics></math></p>
+<p>and therefore:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+y=1
+</annotation></semantics></math></p>
+<p>So the line is not drawn randomly through the data; <strong>its
+position comes directly from the weights and the bias.</strong></p>
+<p>If the weights or bias change, the location of this line changes.
+Learning the weights and bias in this Classification model means
+learning where the boundary between the two classes should be.</p>
+<hr />
+<h2 id="what-if-there-is-only-one-input">What if there is only one
+input?</h2>
+<p>The same idea is even simpler in one dimension.</p>
+<p>Suppose:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+x=2x_1+1
+</annotation></semantics></math></p>
+<p>The decision boundary is where:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+x=0
+</annotation></semantics></math></p>
+<p>So:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+2x_1+1=0
+</annotation></semantics></math></p>
+<p>and therefore:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">
+x_1=-0.5
+</annotation></semantics></math></p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-05.png"
+alt="A one-dimensional decision boundary" />
+<figcaption aria-hidden="true">A one-dimensional decision
+boundary</figcaption>
+</figure>
+<p>In two dimensions, the decision boundary was a <strong>line</strong>.
+Here, because we have only one input axis, the decision boundary is just
+a <strong>point</strong> on that axis.</p>
+<p>The two sides of that point belong to the two different outputs of
+the step function. The idea is the same: the boundary lies wherever the
+weighted sum plus bias becomes zero.</p>
+<p>This example also shows that the number of input components
+determines how many weights the neuron needs. If the input vector has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+components, the neuron needs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+weights.</p>
+<hr />
+<h2 id="the-main-question-where-do-the-weights-and-bias-come-from">The
+main question: where do the weights and bias come from?</h2>
+<p>In the examples above, we chose the weights and bias ourselves:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>b</mi><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">
+w_1=3,\; b=-2
+</annotation></semantics></math></p>
+<p>or</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="0.278em"></mspace><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+w_1=2,\; w_2=-1,\; b=1
+</annotation></semantics></math></p>
+<p>But in a real problem, we do not want to guess these numbers by hand.
+We want the model to <strong>learn them from data</strong>.</p>
+<p>Suppose a dataset contains examples of the form:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+(\vec{x},y)
+</annotation></semantics></math></p>
+<p>For each example:</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">→</mo></mover><annotation encoding="application/x-tex">\vec{x}</annotation></semantics></math>
+is the input;</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+is the correct answer, or target, for that input.</li>
+</ul>
+<p>Using its current weights and bias, the neuron makes a prediction for
+the same input:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\hat y=\text{Model}(\vec{x})
+</annotation></semantics></math></p>
+<p>Now we can compare the model’s prediction with the true answer.</p>
+<hr />
+<h2 id="loss-function-how-wrong-is-the-model">Loss Function: how wrong
+is the model?</h2>
+<p>For training, we need a number that tells us <strong>how wrong the
+model is on the dataset</strong> with its current parameters. That
+number is the <strong>Loss Function</strong>.</p>
+<p>For each example, the difference between the true answer and the
+model’s prediction is:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+y-\text{Model}(\vec{x})
+</annotation></semantics></math></p>
+<p>In this example, square that difference:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">
+\left(y-\text{Model}(\vec{x})\right)^2
+</annotation></semantics></math></p>
+<p>Then add it over all examples in the dataset:</p>
+<figure>
+<img src="../assets/images/gemini-videos-01-03/png-en/lesson-03-06.png"
+alt="From data to prediction, error, and the loss function" />
+<figcaption aria-hidden="true">From data to prediction, error, and the
+loss function</figcaption>
+</figure>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>D</mi></mrow></munder><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><mtext mathvariant="normal">Model</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>x</mi><mo accent="true">→</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+L(w_1,\ldots,w_n,b)=
+\sum_{(\vec{x},y)\in D}
+\left(y-\text{Model}(\vec{x})\right)^2
+</annotation></semantics></math></p>
+<p>Notice how the loss is written:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+L(w_1,\ldots,w_n,b)
+</annotation></semantics></math></p>
+<p>The Loss depends on the weights and the bias.</p>
+<p>If we change the weights and bias, the model prediction changes. When
+the prediction changes, the difference from the true answer changes, so
+the Loss changes too.</p>
+<p>So training the neuron can be viewed as:</p>
+<p><strong>Find values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">w_1,\ldots,w_n,b</annotation></semantics></math>
+that make the Loss as small as possible.</strong></p>
+<p>The smaller the Loss, the better the model’s predictions match the
+training data.</p>
+<p>One important question remains:</p>
+<p><strong>How do we change the weights and bias so that the Loss
+decreases?</strong></p>
+<p>That question leads to the next topic: <strong>Gradient
+Descent</strong>.</p></article></body></html>

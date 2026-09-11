@@ -291,9 +291,12 @@ $$
 ![از داده تا پیش‌بینی، خطا و تابع زیان](../assets/images/gemini-videos-01-03/png-fa/lesson-03-06.png)
 
 $$
-L(w_1,\ldots,w_n,b)=
+L(w_1,\ldots,w_n,b)
+=
 \sum_{(\vec{x},y)\in D}
-\left(y-\text{Model}(\vec{x})\right)^2
+\left(
+y-\text{Model}(\vec{x})
+\right)^2
 $$
 
 به نحوه‌ی نوشتن تابع زیان دقت کنید:

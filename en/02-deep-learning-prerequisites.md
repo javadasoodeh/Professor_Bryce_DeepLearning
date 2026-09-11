@@ -45,7 +45,9 @@ An example of the sorts of operations we might see very soon is:
 
 The compact expression on the board is:
 
-![Squared norm of y minus f of M times x; y and x are vectors.](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-01.svg)
+<p align="center">
+  <img src="../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-01.svg" alt="Squared norm of y minus f of M times x; y and x are vectors." width="520">
+</p>
 
 The written expression includes the **square of the norm**. The explanation walks through the operations without evaluating a numerical example.
 
@@ -61,7 +63,9 @@ We will need to evaluate the gradient of many different functions. Gradients are
 
 The example on the board is:
 
-![Gradient with respect to vector w of the square of one divided by one minus e raised to the dot product of w and x.](../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-02.svg)
+<p align="center">
+  <img src="../assets/images/gemini-videos-01-03/inline-svg/lesson-02-equation-02.svg" alt="Gradient with respect to vector w of the square of one divided by one minus e raised to the dot product of w and x." width="520">
+</p>
 
 The sort of operation we will be doing soon is constructing the **gradient vector containing the partial derivative of this function with respect to each element of the vector w**.
 

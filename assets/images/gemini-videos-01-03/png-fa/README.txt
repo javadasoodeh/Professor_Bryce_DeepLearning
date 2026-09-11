@@ -1,1 +1,0 @@
-Lesson 03 Persian PNG assets.

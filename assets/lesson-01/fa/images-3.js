@@ -1,0 +1,1 @@
+window.lessonImages=Object.assign(window.lessonImages||{}, {'07':'../assets/images/lesson-01-fa/lesson-01-05.svg','08':'../assets/images/lesson-01-fa/lesson-01-05.svg','09':'../assets/images/lesson-01-fa/lesson-01-06.svg'});

@@ -67,14 +67,12 @@ The top neighbor is active with activation 1 and weight 2, so it has a stronger 
 
 To determine whether the neuron activates, multiply each neighbor’s activation by the corresponding weight and add the results:
 
-$$
-(1)(2) + (0)(1) + (1)(-1) = 2 + 0 - 1 = 1
-$$
+<div class="formula">(1)(2) + (0)(1) + (1)(-1) = 2 + 0 - 1 = 1</div>
 
-Then compare the sum with the activation threshold. Since $1 > 0.5$, the neuron activates and outputs 1.
+Then compare the sum with the activation threshold. Since <span class="math-inline">1 &gt; 0.5</span>, the neuron activates and outputs 1.
 
 ![Weighted neuron after the sum is evaluated](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-05.svg)
-The worked result on the board is $2 + 0 − 1 = 1$, producing an output of 1.
+The worked result on the board is <span class="math-inline">2 + 0 − 1 = 1</span>, producing an output of 1.
 
 ## Where deep learning breaks away from neuroscience
 
@@ -85,7 +83,7 @@ To use it that way, we need a method for training a neural network from examples
 From calculus, a function’s gradient points in the direction of steepest increase. That directional information can therefore help us minimize the function by moving in the opposite direction.
 
 ![Gradient descent drawn on a bowl shaped function](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-06.svg)
-The gradient provides directional information; at the minimum, the drawing marks $∇F = 0$.
+The gradient provides directional information; at the minimum, the drawing marks <span class="math-inline">∇F = 0</span>.
 
 We will go much more deeply into this soon. For now, the important point is that because training needs gradients, we need to be able to differentiate the neural network’s activations.
 
@@ -111,11 +109,9 @@ The first example of a better activation function is a smooth approximation to t
 The hard jump is replaced by a smooth transition.
 
 ![Sigmoid curve with its formula](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-07.svg)
-The board writes the sigmoid as $σ(x) = 1/(1 + e^{−x})$.
+The board writes the sigmoid as <span class="math-inline">σ(x) = 1/(1 + e<sup>−x</sup>)</span>.
 
-$$
-σ(x) = 1 / (1 + e^{−x})
-$$
+<div class="formula">σ(x) = 1 / (1 + e<sup>−x</sup>)</div>
 
 In the next few lectures, we will develop the tools to differentiate activation functions and pass those derivatives around through the network. That will set us up to use **stochastic gradient descent** to train a neural network on regression and classification problems.
 
@@ -126,7 +122,7 @@ Many of the ideas used to train a neural network also apply more broadly. A neur
 This leads to **differentiable programming**. Suppose we can write a function operating on numerical inputs and tuned by numerical parameters, and we can calculate derivatives of that function. Then that function can also be incorporated into a deep-learning model.
 
 ![Differentiable programming diagram with F of x and theta](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-08.svg)
-A program computes $F(x, θ)$. The board notes that $∇_{θ}F$ lets us train $F$, while $∇_{x}F$ lets us use $F$ inside a larger deep-learning model.
+A program computes <span class="math-inline">F(x, θ)</span>. The board notes that <span class="math-inline">∇<sub>θ</sub>F</span> lets us train <span class="math-inline">F</span>, while <span class="math-inline">∇<sub>x</sub>F</span> lets us use <span class="math-inline">F</span> inside a larger deep-learning model.
 
 ## Where the course goes from here
 

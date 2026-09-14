@@ -1,0 +1,46 @@
+name: Lesson 01 exact finalize
+
+on:
+  push:
+    branches: [lesson01-exact-upload]
+    paths:
+      - '.lesson01-upload/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct verified bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .lesson01-upload/chunk_* > /tmp/lesson01_bundle.b64
+          base64 -d /tmp/lesson01_bundle.b64 > /tmp/lesson01_bundle.tar.gz
+          echo '295811d9a06dbe9de59f04cb726f589c1ef8eb7e11a95c7e4bccd22c1310bef4  /tmp/lesson01_bundle.tar.gz' | sha256sum -c -
+          mkdir -p /tmp/lesson01_bundle
+          tar -xzf /tmp/lesson01_bundle.tar.gz -C /tmp/lesson01_bundle
+      - name: Commit exact Lesson 01 files to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout main
+          rm -f _lesson01_upload_note.tmp _do_not_use.txt _discard.txt
+          rm -rf assets/lesson-01-exact
+          mkdir -p assets
+          cp -a /tmp/lesson01_bundle/assets/lesson-01-exact assets/
+          cp /tmp/lesson01_bundle/en/01-what-is-deep-learning.html en/01-what-is-deep-learning.html
+          cp /tmp/lesson01_bundle/en/01-what-is-deep-learning.md en/01-what-is-deep-learning.md
+          cp /tmp/lesson01_bundle/fa/01-what-is-deep-learning.html fa/01-what-is-deep-learning.html
+          cp /tmp/lesson01_bundle/fa/01-what-is-deep-learning.md fa/01-what-is-deep-learning.md
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Fix Lesson 01 HTML and Markdown with approved matching images'
+          git push origin HEAD:main

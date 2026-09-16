@@ -12,7 +12,7 @@ A useful definition for this course is:
 
 That definition immediately raises more questions: what are neural networks, and what is machine learning?
 
-![Whiteboard overview of the deep learning lesson](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-09.svg)
+![Whiteboard overview of the deep learning lesson](../assets/images/lesson-01/en/lesson-01-01.png)
 
 *The lesson connects machine learning, neural networks, activation functions, gradient descent, and differentiable programming.*
 
@@ -22,7 +22,7 @@ If we categorize machine learning, it lies at the intersection of artificial int
 
 So machine learning is about making intelligent inferences automatically from data.
 
-![Machine learning drawn as the overlap of artificial intelligence and data science](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-01.svg)
+![Machine learning drawn as the overlap of artificial intelligence and data science](../assets/images/lesson-01/en/lesson-01-02.png)
 
 *Machine learning is placed at the overlap of artificial intelligence and data science.*
 
@@ -32,11 +32,11 @@ This requires a perspective shift from how we normally do things in computer sci
 
 Broadly speaking, most machine-learning problems can be broken down into two categories: regression and classification.
 
-![Regression example on the whiteboard](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-02.svg)
+![Regression example on the whiteboard](../assets/images/lesson-01/en/lesson-01-03.png)
 
 ***Regression:** infer a function that maps continuous inputs to continuous outputs. The simplest example shown is linear regression: choose the line that best describes the relationship between the inputs and outputs for the points in the data set.*
 
-![Classification example on the whiteboard](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-02.svg)
+![Classification example on the whiteboard](../assets/images/lesson-01/en/lesson-01-04.png)
 
 ***Classification:** assign a discrete label to each input point. The simple example is a decision boundary separating the region labeled 0 from the region labeled 1.*
 
@@ -46,7 +46,7 @@ Both regression and classification can become much more complicated than these t
 
 A classic deep-learning task is object recognition. The input is an image represented as a grid of pixels. For each object in the image, the output includes a bounding box described by continuous coordinates, as well as a label saying what the object is in one of several discrete categories.
 
-![Fruit objects shown with bounding boxes and labels](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-03.svg)
+![Fruit objects shown with bounding boxes and labels](../assets/images/lesson-01/en/lesson-01-05.png)
 
 *The bounding box contributes continuous coordinates, while “orange” and “apple” are discrete labels.*
 
@@ -58,7 +58,7 @@ Deep learning solves these kinds of problems using neural networks and different
 
 Neurons activate and send electrical signals that are sensed by other neurons, which may then activate in turn. Some connections are stronger than others; some pairs of neurons tend to activate together, while others have an inhibitory relationship.
 
-![A neural network graph next to a biological neuron drawing](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-04.svg)
+![A neural network graph next to a biological neuron drawing](../assets/images/lesson-01/en/lesson-01-06.png)
 
 *The biological idea is translated into a graph: nodes represent neurons and directed edges represent connections.*
 
@@ -66,7 +66,7 @@ This inspires a mathematical model in which each directed edge has a numerical w
 
 Each neuron can sum the weighted inputs from its neighbors to determine whether it activates.
 
-![Single neuron with three incoming weighted connections](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-05.svg)
+![Single neuron with three incoming weighted connections](../assets/images/lesson-01/en/lesson-01-07.png)
 
 *The example neuron has three incoming activations. The weights are 2, 1, and −1, and the activation threshold shown inside the neuron is ≥ 0.5.*
 
@@ -78,7 +78,7 @@ To determine whether the neuron activates, multiply each neighbor’s activation
 
 Then compare the sum with the activation threshold. Since 1 > 0.5, the neuron activates and outputs 1.
 
-![Weighted neuron after the sum is evaluated](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-05.svg)
+![Weighted neuron after the sum is evaluated](../assets/images/lesson-01/en/lesson-01-08.png)
 
 *The worked result on the board is 2 + 0 − 1 = 1, producing an output of 1.*
 
@@ -90,7 +90,7 @@ To use it that way, we need a method for training a neural network from examples
 
 From calculus, a function’s gradient points in the direction of steepest increase. That directional information can therefore help us minimize the function by moving in the opposite direction.
 
-![Gradient descent drawn on a bowl shaped function](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-06.svg)
+![Gradient descent drawn on a bowl shaped function](../assets/images/lesson-01/en/lesson-01-09.png)
 
 *The gradient provides directional information; at the minimum, the drawing marks ∇F = 0.*
 
@@ -100,11 +100,11 @@ We will go much more deeply into this soon. For now, the important point is that
 
 Think of this neuron’s activation as a function of its input sum. With the threshold at 0.5, the function outputs 0 everywhere below 0.5. At 0.5 it jumps upward and starts outputting 1. So the neuron’s activation is described by a step function.
 
-![Step activation function being drawn](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-07.svg)
+![Step activation function being drawn](../assets/images/lesson-01/en/lesson-01-10.png)
 
 *First the threshold location and lower level are established.*
 
-![Completed step activation function](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-07.svg)
+![Completed step activation function](../assets/images/lesson-01/en/lesson-01-11.png)
 
 *The completed activation jumps from 0 to 1 at the threshold.*
 
@@ -116,13 +116,13 @@ If gradients are going to train the neural network, we need an activation functi
 
 The first example of a better activation function is a smooth approximation to the step function, known as a sigmoid.
 
-![Sigmoid curve replacing the hard step](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-07.svg)
+![Sigmoid curve replacing the hard step](../assets/images/lesson-01/en/lesson-01-12.png)
 
 *The hard jump is replaced by a smooth transition.*
 
-![Sigmoid curve with its formula](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-07.svg)
+![Sigmoid curve with its formula](../assets/images/lesson-01/en/lesson-01-13.png)
 
-*The board writes the sigmoid as σ(x) = 1/(1 + e<sup>−x</sup>).* 
+*The board writes the sigmoid as σ(x) = 1/(1 + e<sup>−x</sup>).*
 
 <div align="center" dir="ltr">σ(x) = 1 / (1 + e<sup>−x</sup>)</div>
 
@@ -134,7 +134,7 @@ Many of the ideas used to train a neural network also apply more broadly. A neur
 
 This leads to differentiable programming. Suppose we can write a function operating on numerical inputs and tuned by numerical parameters, and we can calculate derivatives of that function. Then that function can also be incorporated into a deep-learning model.
 
-![Differentiable programming diagram with F of x and theta](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-08.svg)
+![Differentiable programming diagram with F of x and theta](../assets/images/lesson-01/en/lesson-01-14.png)
 
 *A program computes F(x, θ). The board notes that ∇<sub>θ</sub>F lets us train F, while ∇<sub>x</sub>F lets us use F inside a larger deep-learning model.*
 
@@ -146,7 +146,7 @@ Along the way, we will get lots of practice with powerful deep-learning librarie
 
 **By the end of the semester, you should be prepared to design, apply, evaluate, and criticize deep-learning models for a wide variety of exciting real-world problems.**
 
-![Completed whiteboard at the end of the lesson](../assets/images/gemini-videos-01-03/inline-svg/lesson-01-09.svg)
+![Completed whiteboard at the end of the lesson](../assets/images/lesson-01/en/lesson-01-15.png)
 
 *The completed board ties together the full path: machine learning → neural networks → differentiable activations and gradients → differentiable programming.*
 

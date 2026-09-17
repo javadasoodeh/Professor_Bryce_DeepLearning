@@ -4,14 +4,14 @@
 
 **زبان:** فارسی · [English](../en/README.md) · [صفحه اصلی مخزن](../README.md)
 
-این صفحه فهرست فارسی دوره است. درس‌های ۰۱ تا ۰۳ کامل هستند. درس‌های بعدی پس از پردازش ویدیوهای منبع مربوطه فعال خواهند شد.
+این صفحه فهرست فارسی دوره است. درس‌های ۰۱ تا ۰۴ کامل هستند. درس‌های بعدی پس از پردازش ویدیوهای منبع مربوطه فعال خواهند شد.
 
 ## فهرست دوره
 
 1. ✅ [یادگیری عمیق: مبانی و اصول اصلی](./01-what-is-deep-learning.md)
 2. ✅ [پیش‌نیازهای یادگیری عمیق: مبانی ضروری](./02-deep-learning-prerequisites.md)
 3. ✅ [یک نورون منفرد چه چیزی می‌تواند محاسبه کند؟](./03-what-can-a-single-neuron-compute.md)
-4. ⏳ چگونه نورون خود را آموزش دهیم
+4. ✅ [چگونه نورون خود را آموزش دهیم](./04-how-to-train-your-neuron.md)
 5. ⏳ خط لوله تحلیل داده
 6. ⏳ اعتبارسنجی خارج از نمونه
 7. ⏳ شبکه‌های عصبی پیش‌خور
@@ -40,6 +40,7 @@
 - [۰۱ — What is Deep Learning?](https://www.youtube.com/watch?v=DrhJLHiia7g)
 - [۰۲ — Deep Learning Prerequisites](https://www.youtube.com/watch?v=RrM8Tn4-AJE)
 - [۰۳ — What can a single neuron compute?](https://www.youtube.com/watch?v=Irb-auR40iA)
+- [۰۴ — How to train your neuron](https://www.youtube.com/watch?v=HU91yMSTU0Y)
 - [فهرست کامل ویدیوهای Deep Learning](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)
 
 نسخه‌های Markdown فرمت اصلی دوره هستند.

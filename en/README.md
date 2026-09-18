@@ -2,7 +2,7 @@
 
 **Language:** English · [فارسی](../fa/README.md) · [Repository home](../README.md)
 
-This is the English course outline. Lessons 01–04 are complete. Future lessons will be activated as their source videos are processed.
+This is the English course outline. Lessons 01–05 are complete. Future lessons will be activated as their source videos are processed.
 
 ## Course outline
 
@@ -10,7 +10,7 @@ This is the English course outline. Lessons 01–04 are complete. Future lessons
 2. ✅ [Deep Learning Prerequisites: Essential Foundations](./02-deep-learning-prerequisites.md)
 3. ✅ [What Can a Single Neuron Compute?](./03-what-can-a-single-neuron-compute.md)
 4. ✅ [How to Train Your Neuron](./04-how-to-train-your-neuron.md)
-5. ⏳ The Data Analysis Pipeline
+5. ✅ [The Data Analysis Pipeline](./05-the-data-analysis-pipeline.md)
 6. ⏳ Out-of-Sample Validation
 7. ⏳ Feed-Forward Neural Networks
 8. ⏳ Neural Network Backpropagation
@@ -39,6 +39,7 @@ This is the English course outline. Lessons 01–04 are complete. Future lessons
 - [02 — Deep Learning Prerequisites](https://www.youtube.com/watch?v=RrM8Tn4-AJE)
 - [03 — What can a single neuron compute?](https://www.youtube.com/watch?v=Irb-auR40iA)
 - [04 — How to train your neuron](https://www.youtube.com/watch?v=HU91yMSTU0Y)
+- [05 — The Data Analysis Pipeline](https://www.youtube.com/watch?v=Usl7m15bsT0)
 - [Full Deep Learning playlist](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)
 
 The Markdown lessons are the primary course format.

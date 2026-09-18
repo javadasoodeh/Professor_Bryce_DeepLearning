@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="A neuron with n input coordinates and n weights feeding a weighted sum, followed by a gradient vector containing one partial derivative for each weight and the bias, then a gradient descent update." role="img" viewBox="0 0 960 340"><style>
+text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#24344d}
+.mathtext{font-family:"Cambria Math","Times New Roman",serif}
+.axis{stroke:#64748b;stroke-width:1.4}
+.grid{stroke:#dfe6ef;stroke-width:1}
+.curve{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round}
+.curve2{fill:none;stroke:#0f9f8f;stroke-width:4;stroke-linecap:round}
+.curve3{fill:none;stroke:#c2415d;stroke-width:3.5;stroke-linecap:round}
+.softblue{fill:#eaf2ff}.softteal{fill:#e9f8f5}.softamber{fill:#fff5dd}.softrose{fill:#ffeef2}
+</style>
+
+<defs><marker id="arrh" markerHeight="9" markerWidth="9" orient="auto" refX="7" refY="4.5"><path d="M0,0 L9,4.5 L0,9 z" fill="#61758e"></path></marker></defs>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="20" text-anchor="middle" x="105" y="52">x⃗ = [x₁,…,xₙ]</text>
+<g class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="20"><text x="85" y="100">x₁</text><text x="85" y="145">x₂</text><text x="90" y="194">⋮</text><text x="85" y="240">xₙ</text></g>
+<g class="mathtext" fill="#64748b" font-family="Cambria Math, Times New Roman, serif" font-size="16"><text x="155" y="100">w₁</text><text x="155" y="145">w₂</text><text x="155" y="240">wₙ</text></g>
+<circle class="softblue" cx="325" cy="170" fill="#eaf2ff" r="76" stroke="#2563eb" stroke-width="2"></circle><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="26" text-anchor="middle" x="325" y="160">z=Σwᵢxᵢ+b</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="20" text-anchor="middle" x="325" y="194">ŷ=a(z)</text>
+<g marker-end="url(#arrh)" stroke="#61758e" stroke-width="2"><line x1="178" x2="261" y1="95" y2="130"></line><line x1="178" x2="250" y1="142" y2="151"></line><line x1="178" x2="261" y1="235" y2="210"></line><line x1="401" x2="505" y1="170" y2="170"></line></g>
+<rect class="softteal" fill="#e9f8f5" height="190" rx="20" stroke="#b9e6dd" width="190" x="515" y="78"></rect><text font-size="16" font-weight="700" text-anchor="middle" x="610" y="113">∇L</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="19" text-anchor="middle" x="610" y="149">[∂L/∂w₁</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="19" text-anchor="middle" x="610" y="179"> ∂L/∂w₂</text><text font-size="20" text-anchor="middle" x="610" y="209"> ⋮</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="19" text-anchor="middle" x="610" y="239"> ∂L/∂wₙ, ∂L/∂b]ᵀ</text>
+<line marker-end="url(#arrh)" stroke="#61758e" stroke-width="2" x1="706" x2="795" y1="170" y2="170"></line><rect class="softamber" fill="#fff5dd" height="102" rx="18" stroke="#efd59d" width="120" x="805" y="119"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="17" text-anchor="middle" x="865" y="153">θ ← θ−η∇L</text><text font-size="20" text-anchor="middle" x="865" y="188">↻</text>
+</svg>

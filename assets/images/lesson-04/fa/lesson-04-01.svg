@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="نورون ورودی‌ها را در وزن‌ها ضرب می‌کند، بایاس را اضافه می‌کند تا z ساخته شود و سپس با تابع فعال‌سازی پیش‌بینی را تولید می‌کند." role="img" viewBox="0 0 920 330"><style>
+text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#24344d}
+.mathtext{font-family:"Cambria Math","Times New Roman",serif}
+.axis{stroke:#64748b;stroke-width:1.4}
+.grid{stroke:#dfe6ef;stroke-width:1}
+.curve{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round}
+.curve2{fill:none;stroke:#0f9f8f;stroke-width:4;stroke-linecap:round}
+.curve3{fill:none;stroke:#c2415d;stroke-width:3.5;stroke-linecap:round}
+.softblue{fill:#eaf2ff}.softteal{fill:#e9f8f5}.softamber{fill:#fff5dd}.softrose{fill:#ffeef2}
+</style>
+
+<defs><marker id="arr1" markerHeight="10" markerWidth="10" orient="auto" refX="8" refY="5"><path d="M0,0 L10,5 L0,10 z" fill="#5b6f89"></path></marker></defs>
+<rect fill="#f6f9fd" height="258" rx="20" stroke="#dbe3ee" width="230" x="25" y="36"></rect>
+<text font-size="17" font-weight="700" text-anchor="middle" x="140" y="70">x₁, x₂, …, xₙ</text>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="23" x="68" y="120">x₁</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="23" x="68" y="170">x₂</text><text font-size="23" x="72" y="221">⋮</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="23" x="68" y="268">xₙ</text>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="18" x="193" y="120">× w₁</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="18" x="193" y="170">× w₂</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="18" x="193" y="268">× wₙ</text>
+<circle cx="380" cy="165" fill="#eaf2ff" r="72" stroke="#2563eb" stroke-width="2.5"></circle>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="31" font-weight="700" text-anchor="middle" x="380" y="149">z</text>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="18" text-anchor="middle" x="380" y="184">Σ wᵢxᵢ + b</text>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="18" text-anchor="middle" x="380" y="70">+ b</text>
+<line marker-end="url(#arr1)" stroke="#5b6f89" stroke-width="2" x1="255" x2="318" y1="118" y2="139"></line><line marker-end="url(#arr1)" stroke="#5b6f89" stroke-width="2" x1="255" x2="308" y1="169" y2="165"></line><line marker-end="url(#arr1)" stroke="#5b6f89" stroke-width="2" x1="255" x2="319" y1="263" y2="194"></line>
+<line marker-end="url(#arr1)" stroke="#5b6f89" stroke-width="2.4" x1="452" x2="545" y1="165" y2="165"></line>
+<rect fill="#e9f8f5" height="120" rx="22" stroke="#0f9f8f" stroke-width="2" width="150" x="550" y="105"></rect>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="25" text-anchor="middle" x="625" y="153">a(z)</text>
+<line marker-end="url(#arr1)" stroke="#5b6f89" stroke-width="2.4" x1="700" x2="785" y1="165" y2="165"></line>
+<circle cx="830" cy="165" fill="#fff5dd" r="46" stroke="#d89415" stroke-width="2"></circle><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="28" text-anchor="middle" x="830" y="173">ŷ</text>
+<rect fill="#f6f9fd" height="48" rx="12" stroke="#dbe3ee" width="190" x="530" y="250"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="17" text-anchor="middle" x="625" y="280">a(z)=z  /  step(z)</text>
+</svg>

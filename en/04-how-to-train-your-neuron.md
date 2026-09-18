@@ -1,240 +1,236 @@
-**One Neuron**
+**Deep Learning · One-neuron training**
 
 # How to train your neuron
 
-A single neuron first forms a weighted sum of its inputs, adds a bias, and then applies an activation function. With a step function as the activation, it can act as a binary classifier. With a linear activation, it can act as a regressor. The next question is how to choose the weights and bias so that the model fits the data.
+A single neuron can already compute a line for regression or a boundary for classification. Training is the process of choosing its weights and bias so those predictions fit the data better. This lesson builds that process from one concrete regression example, turns it into gradient descent, and then carries the same reasoning into sigmoid classification.
 
-The model is trained by measuring its loss on a data set and then using the gradient of that loss to change the parameters. The loss depends explicitly on the neuron’s weights and bias.
+1. Compute
+2. Measure error
+3. Differentiate
+4. Update
+5. Repeat
 
-<p align="center" dir="ltr"><font size="5">L(w<sub>1</sub>,…,w<sub>n</sub>,b) = Σ<sub>j=1</sub><sup>N</sup> ( y<sub>j</sub> − f(x⃗<sub>j</sub>) )²</font></p>
+## 1. Start with what one neuron actually computes
 
-In computations it is common to divide this by the number of data points and use mean squared error. For the derivation, it is cleaner to work with the sum of squared errors so that a factor of 1/N does not have to be carried through every derivative.
+Before we can train parameters, we need to separate the neuron’s fixed computation from the values that training is allowed to change.
 
-![Whiteboard recap of one neuron, regression, classification, and loss](../assets/images/lesson-04/en/lesson-04-01.png)
+For one input example x⃗=[x₁,…,xₙ], the neuron first forms a **weighted sum**. Each input coordinate is multiplied by its own weight, and then a bias is added:
 
-*The board begins with the one-neuron computation, the regression and classification cases, and the squared-error loss written as a function of the model parameters.*
+<p align="center" dir="ltr"><font size="5">z = w₁x₁ + w₂x₂ + ··· + wₙxₙ + b = Σᵢ wᵢxᵢ + b</font></p>
 
-## A small regression example
+The intermediate value z is often called the **pre-activation**. The neuron then applies an activation function a and produces the prediction ŷ:
 
-Start with a four-point, one-dimensional regression data set. The current neuron has weight w<sub>1</sub>=2 and bias b=−2, so its output is the straight line
+<p align="center" dir="ltr"><font size="5">ŷ = a(z)</font></p>
 
-<p align="center" dir="ltr"><font size="5">f(x) = 2x − 2.</font></p>
+![A neuron multiplies inputs by weights, adds bias to form z, then applies an activation function to produce a prediction.](../assets/images/lesson-04/en/lesson-04-01.svg)
 
-At the four inputs x=1,2,3,4, the model therefore predicts 0,2,4,6. The desired outputs are 1,3,2,4. The pointwise errors y−f(x) are 1,1,−2,−2.
+*Read the figure left to right: the **weights and bias are the trainable parameters**; the weighted sum z and prediction ŷ are values recomputed for each example.*
+
+### Linear activation
+
+a(z)=z. The output can be any real number, so one neuron behaves like a linear regressor.
+
+### Hard-step activation
+
+The output jumps between 0 and 1. That can make a binary classifier, but the jump will later create a problem for gradient-based training.
+
+> **Key distinction:** training does not change the neuron’s formula. It changes w₁,…,wₙ,b inside that formula.
+
+## 2. Turn “wrong” into a number: the loss
+
+“Make the model better” is too vague for an algorithm. We need one number that gets smaller when predictions improve.
+
+Suppose the training set contains N examples. Example j has input vector x⃗ⱼ, target yⱼ, and prediction f(x⃗ⱼ). The lesson uses the **sum of squared errors**:
+
+<p align="center" dir="ltr"><font size="5">L = Σⱼ₌₁ᴺ ( yⱼ − f(x⃗ⱼ) )²</font></p>
+
+For each example, the difference yⱼ−f(x⃗ⱼ) is the signed prediction error. Squaring it does two useful things: positive and negative errors both add positive loss, and larger mistakes are penalized more strongly.
+
+> **Why not the mean squared error?** The more familiar MSE divides the same sum by N. The video drops the factor 1/N during the derivation because it only scales every gradient component by the same constant. The learning logic is unchanged.
+
+## 3. Make the training problem concrete with four regression points
+
+A tiny dataset lets us see every prediction, every residual, and the exact loss before we do any calculus.
+
+Use one-dimensional inputs x=1,2,3,4 with targets y=1,3,2,4. The current neuron has one weight and one bias:
+
+<p align="center" dir="ltr"><font size="5">w₁=2, b=−2 ⇒ ŷ = 2x−2</font></p>
 
 <div dir="ltr">
 
-| x | target y | prediction f(x) | error y−f(x) |
-| --- | --- | --- | --- |
-| 1 | 1 | 0 | 1 |
-| 2 | 3 | 2 | 1 |
-| 3 | 2 | 4 | −2 |
-| 4 | 4 | 6 | −2 |
+| example | x | target y | prediction ŷ | residual e=y−ŷ | e² |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 1 | 0 | +1 | 1 |
+| 2 | 2 | 3 | 2 | +1 | 1 |
+| 3 | 3 | 2 | 4 | −2 | 4 |
+| 4 | 4 | 4 | 6 | −2 | 4 |
+| **sum** |  |  |  |  | **10** |
 
 </div>
 
-<p align="center" dir="ltr"><font size="5">L(2,−2) = (1−0)² + (3−2)² + (2−4)² + (4−6)² = 10.</font></p>
+![Four target points and the current regression line y equals 2x minus 2, with vertical residuals and loss 10.](../assets/images/lesson-04/en/lesson-04-02.svg)
 
-![Regression loss calculation on the whiteboard](../assets/images/lesson-04/en/lesson-04-02.png)
+*The dashed vertical gaps are the residuals. They are not all the same sign, but after squaring they contribute 1+1+4+4=10 to the loss.*
 
-*The four residuals are written directly into the sum of squared errors; their squares add to 10.*
+> **The training question is now precise** We are currently at L=10. Which small changes to w₁ and b will make the next loss smaller?
 
-The goal is to minimize this loss. Calculus tells us that the gradient points in the direction of steepest increase, so the direction that decreases the loss is the negative gradient. Because this neuron has two parameters, the gradient has two components: one partial derivative with respect to w<sub>1</sub>, and one with respect to b.
+## 4. Derivatives turn that question into a direction
 
-## Deriving the gradient in the general case
+A derivative tells us how a quantity responds to a small change. With several trainable parameters, we need one derivative for each parameter.
 
-Instead of deriving only this particular example, take the loss for an arbitrary neuron and an arbitrary data set. There is one partial derivative for every model parameter. For an arbitrary weight w<sub>i</sub>, differentiation passes through the summation, and the chain rule is applied to each squared term.
+A **partial derivative** such as ∂L/∂wᵢ asks: if we nudge only wᵢ while holding the other parameters fixed, which way does the loss move and how strongly? Collecting all partial derivatives gives the **gradient**.
 
-<p align="center" dir="ltr"><font size="5">∂L/∂w<sub>i</sub> = −2 Σ<sub>j=1</sub><sup>N</sup> ( y<sub>j</sub> − f(x⃗<sub>j</sub>) ) · ∂f(x⃗<sub>j</sub>)/∂w<sub>i</sub>.</font></p>
+Rather than differentiating only the four-point example, derive the result for an arbitrary weight wᵢ. For one training example the dependency is nested: the parameter changes zⱼ, which changes the prediction, which changes the residual, which changes the squared error. The **chain rule** multiplies those local effects along the path.
 
-![Chain rule applied to the squared error loss](../assets/images/lesson-04/en/lesson-04-03.png)
+![Dependency chain from parameter to weighted sum z, prediction, residual, squared error, and total loss, showing the derivative factors multiplied by the chain rule.](../assets/images/lesson-04/en/lesson-04-03.svg)
 
-*The square contributes the factor of 2; differentiating the inside contributes a minus sign because y<sub>j</sub> is constant and the model output is subtracted.*
+*The chain rule is easier to remember as a path: wᵢ → zⱼ → ŷⱼ → eⱼ → eⱼ² → L. Multiply the derivative on each link, then sum over the training examples.*
 
-The activation function cannot yet be differentiated in one universal way because different neurons can use different activations. But every neuron begins with the same weighted sum. For data point j, write the pre-activation weighted sum as x<sub>j</sub> (without the vector mark):
+<p align="center" dir="ltr"><font size="5">∂L/∂wᵢ = −2 Σⱼ eⱼ · a′(zⱼ) · xⱼ,ᵢ</font></p>
 
-<p align="center" dir="ltr"><font size="5">x<sub>j</sub> = b + Σ<sub>k=1</sub><sup>n</sup> w<sub>k</sub>x<sub>j,k</sub>.</font></p>
+<p align="center" dir="ltr"><font size="5">∂L/∂b = −2 Σⱼ eⱼ · a′(zⱼ)</font></p>
 
-Only one term in that sum contains w<sub>i</sub>. Therefore
+Two small facts explain the final factors. In the weighted sum zⱼ=Σᵢwᵢxⱼ,ᵢ+b, only one term contains the particular weight wᵢ, so ∂zⱼ/∂wᵢ=xⱼ,ᵢ. The bias is added directly, so ∂zⱼ/∂b=1.
 
-<p align="center" dir="ltr"><font size="5">∂x<sub>j</sub>/∂w<sub>i</sub> = x<sub>j,i</sub>, and ∂x<sub>j</sub>/∂b = 1.</font></p>
+> This is the central reusable formula of the lesson. **The only factor that changes when we change activation functions is a′(z).**
 
-![Derivative of weighted sum with respect to a weight](../assets/images/lesson-04/en/lesson-04-04.png)
+## 5. Apply the general gradient to the linear regressor
 
-*The derivative of the weighted sum with respect to weight w<sub>i</sub> leaves exactly the corresponding input component x<sub>j,i</sub>; the bias derivative is 1.*
+For a linear activation, the activation derivative is simply 1, so the general expression becomes a short numerical calculation.
 
-The repeated quantity y<sub>j</sub>−f(x⃗<sub>j</sub>) is exactly the unsquared difference already computed in the loss calculation. Name it the error e<sub>j</sub>. Then
+Because a(z)=z, we have a′(z)=1. Using the residuals [1,1,−2,−2] from the table:
 
-<p align="center" dir="ltr"><font size="5">e<sub>j</sub> = y<sub>j</sub> − f(x⃗<sub>j</sub>), so ∂L/∂w<sub>i</sub> = −2 Σ e<sub>j</sub> · ∂f(x⃗<sub>j</sub>)/∂w<sub>i</sub>.</font></p>
+<p align="center" dir="ltr"><font size="5">∂L/∂w₁ = −2[1·1 + 1·2 + (−2)·3 + (−2)·4] = 22</font></p>
 
-![Error term introduced in the gradient formula](../assets/images/lesson-04/en/lesson-04-05.png)
+<p align="center" dir="ltr"><font size="5">∂L/∂b = −2[1 + 1 − 2 − 2] = 4</font></p>
 
-*The board labels the target-minus-prediction difference as e<sub>j</sub>, tying the gradient calculation directly back to the residuals used in the loss.*
+<p align="center" dir="ltr"><font size="5">∇L = [ 22, 4 ]ᵀ</font></p>
 
-## Applying the gradient to the linear regressor
+The gradient points toward the *steepest increase* of loss in parameter space. That wording matters: if we want the loss to go down, we must move in the opposite direction.
 
-For the linear activation, the derivative of the activation is 1. The chain rule therefore leaves only the corresponding input component when differentiating with respect to a weight. For w<sub>1</sub>:
+## 6. Gradient descent takes a small step downhill
 
-<p align="center" dir="ltr"><font size="5">∂L/∂w<sub>1</sub> = −2 Σ e<sub>j</sub>x<sub>j,1</sub> = −2[1·1 + 1·2 − 2·3 − 2·4] = 22.</font></p>
+A point in parameter space represents one complete model. Changing the point changes the line the neuron draws in data space.
 
-For the bias, the weighted-sum derivative is 1:
+For this regressor, the parameter space has two axes: w₁ and b. Every pair (w₁,b) defines one line ŷ=w₁x+b and therefore one loss value on the four training points. If loss is imagined as height above the parameter plane, the gradient points uphill.
 
-<p align="center" dir="ltr"><font size="5">∂L/∂b = −2 Σ e<sub>j</sub> = −2[1 + 1 − 2 − 2] = 4.</font></p>
+**Gradient descent** updates the parameters by subtracting a small multiple of the gradient:
 
-So the gradient at w<sub>1</sub>=2, b=−2 is
+<p align="center" dir="ltr"><font size="5">[ w₁, b ]ᵀ_new = [ w₁, b ]ᵀ_old − η∇L</font></p>
 
-<p align="center" dir="ltr"><font size="5">∇L = [22, 4]<sup>T</sup>.</font></p>
+The scalar η (eta) is the **step size**, often called the learning rate. With η=0.01:
 
-![Numerical regression derivatives and gradient](../assets/images/lesson-04/en/lesson-04-06.png)
+<p align="center" dir="ltr"><font size="5">w₁ = 2 − 0.01·22 = 1.78, b = −2 − 0.01·4 = −2.04</font></p>
 
-*The board evaluates both partial derivatives numerically and combines them into the gradient vector [22,4].*
+![Gradient descent moves from parameters 2 and negative 2 to 1.78 and negative 2.04 on loss contours, while the corresponding regression line fits the four points better and loss falls from 10 to about 6.63.](../assets/images/lesson-04/en/lesson-04-04.svg)
 
-## What the gradient means geometrically
+*The left panel shows the parameter move; the right panel shows what that same move does to the regression line. The slope decreases noticeably, the intercept moves slightly downward, and the loss drops from 10 to about 6.63.*
 
-The loss is a function of the model parameters. Here its two inputs are w<sub>1</sub> and b. Every point in the (w<sub>1</sub>,b) plane corresponds to a different line the neuron could compute. For example, w<sub>1</sub>=−3 and b=2 would define a different linear neuron. Our current point is (2,−2), where the loss is 10.
+This closes the loop that the derivative was designed for: after one gradient step, the model is already better on the training set. We now recompute predictions, recompute the gradient at the new point, take another step, and continue.
 
-Imagine the loss value rising out of this parameter plane as a surface. At any point, the gradient points in the direction in which that surface rises most steeply. To decrease the loss, move in the opposite direction.
+> **Why must the gradient be recomputed?** The gradient describes the slope *at the current parameter values*. Once the parameters move, the local slope generally changes too.
 
-![Parameter plane with weight and bias axes](../assets/images/lesson-04/en/lesson-04-07.png)
+## 7. Classification creates one new obstacle: the hard step has no useful slope
 
-*The parameter plane is drawn with w<sub>1</sub> horizontally and b vertically; each point stands for one possible parameterization of the neuron.*
+The training machinery we just built depends on derivatives. A hard 0/1 step breaks that machinery.
 
-Take a small step by subtracting a multiple of the gradient:
+A hard-step activation is constant on each side of its jump. Its derivative is therefore zero almost everywhere, and at the jump the ordinary derivative is undefined. If a′(z)=0, the general gradient formula collapses to zero and provides no useful direction for moving the weights.
 
-<p align="center" dir="ltr"><font size="5">[w<sub>1</sub>, b]<sup>T</sup> ← [w<sub>1</sub>, b]<sup>T</sup> − η∇L.</font></p>
+![Side by side comparison of a hard step activation, whose derivative is zero on flat regions, and a smooth sigmoid activation that transitions continuously from 0 to 1.](../assets/images/lesson-04/en/lesson-04-05.svg)
 
-The multiplier η is the step size. With η=0.01, subtract 0.22 from the weight and 0.04 from the bias:
+*The replacement must preserve the useful “near 0 versus near 1” behavior while giving us a smooth, differentiable transition. The sigmoid does exactly that.*
 
-<p align="center" dir="ltr"><font size="5">w<sub>1</sub>: 2 → 1.78, b: −2 → −2.04.</font></p>
+<p align="center" dir="ltr"><font size="5">σ(z) = 1 / (1 + e<sup>−z</sup>)</font></p>
 
-![Gradient descent step with eta 0.01](../assets/images/lesson-04/en/lesson-04-08.png)
+When z is very negative, the output approaches 0. When z is very positive, it approaches 1. At z=0, the output is exactly 0.5. Unlike the hard step, the middle region changes smoothly.
 
-*The update direction is drawn on the parameter plane and η=0.01 is written beneath the numerical gradient.*
+## 8. The sigmoid keeps the same decision boundary but softens the score around it
 
-With the new parameters, evaluate the loss again, calculate another gradient, and take another step. Repeating this process improves the model.
+The geometric boundary still comes from the weighted sum. The activation only changes how sharply we turn that weighted sum into an output.
 
-The loss surface for this example is much steeper in the weight direction than in the bias direction. That matches the model: changing the weight alters the slope and can change the errors quickly across the whole x-range, while changing the bias only nudges the line up or down.
+Use the two-input neuron from the lesson: w₁=1, w₂=1, and b=−4. Its pre-activation is
 
-![Contour lines of regression loss surface](../assets/images/lesson-04/en/lesson-04-09.png)
+<p align="center" dir="ltr"><font size="5">z = x₁ + x₂ − 4</font></p>
 
-*Elliptical contour lines are sketched around the low-loss region, elongated to show very different steepness in the two parameter directions.*
+The points satisfying z=0 lie on the line x₁+x₂=4. That is the decision boundary. A hard step would jump from one class value to the other exactly there. Sigmoid keeps the same boundary but gives intermediate scores near it.
 
-After the first step, the bias is slightly smaller, so the intercept shifts down. The weight decreases much more, so the line’s slope is reduced. Visually, the fitted line is shifted slightly downward and tilted to the right, which better matches the four data points.
+![Two-dimensional classification plane with decision boundary x1 plus x2 equals 4, parallel constant-z lines, and sigmoid scores for z equal to negative 1, 0, 1, and 2.](../assets/images/lesson-04/en/lesson-04-06.svg)
 
-## Why the step-function classifier cannot be trained this way
+*Parallel lines have the same weighted sum z, so every point on the same line receives the same sigmoid score. The lesson’s reference values are σ(−1)≈0.27, σ(1)≈0.73, and σ(2)≈0.88.*
 
-Trying to apply the same gradient calculation to the step activation runs into an immediate problem: the derivative of a step function is zero almost everywhere. That makes the gradient carry essentially no useful information about how the parameters should move.
+> **What changed—and what did not?** The boundary z=0 did not move. What changed is the output around the boundary: a smooth score now tells us whether a point is barely or strongly on one side.
 
-![Transition from regression to classification](../assets/images/lesson-04/en/lesson-04-10.png)
+## 9. Differentiate the sigmoid so it can participate in the same chain rule
 
-*The lesson returns to the classification half of the board after completing the regression gradient-descent picture.*
+We now need the one missing ingredient in the general gradient formula: a′(z) for the sigmoid.
 
-The solution is to replace the hard step by a smooth approximation: the sigmoid function.
+Starting from σ(z)=1/(1+e<sup>−z</sup>), differentiation gives
 
-<p align="center" dir="ltr"><font size="5">σ(x) = 1 / (1 + e<sup>−x</sup>).</font></p>
+<p align="center" dir="ltr"><font size="5">σ′(z) = e<sup>−z</sup> / (1+e<sup>−z</sup>)²</font></p>
 
-When x is large and positive, e<sup>−x</sup> is tiny, so σ(x) approaches 1. When x is very negative, e<sup>−x</sup> is huge, the denominator grows without bound, and σ(x) approaches 0. Between the two extremes there is a smooth transition.
+The useful simplification is to recognize the same denominator twice:
 
-![Sigmoid formula and smooth S-shaped activation](../assets/images/lesson-04/en/lesson-04-11.png)
+<p align="center" dir="ltr"><font size="5">σ(z) = 1/(1+e<sup>−z</sup>) and 1−σ(z)=e<sup>−z</sup>/(1+e<sup>−z</sup>)</font></p>
 
-*The hard step is replaced on the board by a smooth S-shaped curve, with σ(x)=1/(1+e<sup>−x</sup>) written above it.*
+<p align="center" dir="ltr"><font size="5">σ′(z) = σ(z)[1−σ(z)]</font></p>
 
-## Classification with the sigmoid
+![Sigmoid curve and its derivative, showing that the sigmoid derivative is largest around z equals zero and approaches zero far from the center.](../assets/images/lesson-04/en/lesson-04-07.svg)
 
-A classification boundary can still be drawn where the weighted sum changes from negative to positive. But close to that boundary, the sigmoid output is around 0.5; only far from the boundary does it become close to 0 or 1. That is sensible: points lying almost exactly on the boundary should not receive the same confidence as points well inside one side.
+*The derivative is expressed using a quantity the neuron already computed: σ(z). That makes the classifier gradient compact and easy to reuse.*
 
-Use the neuron with w<sub>1</sub>=1, w<sub>2</sub>=1, and b=−4. The six data points on the board are:
+The right-hand plot also gives the correct intuition: the sigmoid is most sensitive to small changes around its transition region and much less sensitive when it is already near 0 or 1.
 
-<div dir="ltr">
+## 10. Reuse the same gradient formula for the sigmoid classifier
 
-| x<sub>1</sub> | x<sub>2</sub> | target y | weighted sum x<sub>1</sub>+x<sub>2</sub>−4 | σ(weighted sum) |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | 0 | −1 | 0.27 |
-| 2 | 1 | 0 | −1 | 0.27 |
-| 2 | 3 | 1 | 1 | 0.73 |
-| 3 | 2 | 1 | 1 | 0.73 |
-| 4 | 1 | 1 | 1 | 0.73 |
-| 4 | 2 | 1 | 2 | 0.88 |
+Nothing about the loss or gradient-descent update has changed. We only substitute the sigmoid derivative for the activation derivative.
 
-</div>
+The general result was
 
-With the original hard step, these weighted sums would produce predictions 0,0,1,1,1,1, so every point except the one on the wrong side of the drawn dividing line is classified as shown. With the sigmoid, those same weighted sums become graded outputs: for −1,
+<p align="center" dir="ltr"><font size="5">∂L/∂wᵢ = −2 Σⱼ eⱼ · a′(zⱼ) · xⱼ,ᵢ</font></p>
 
-<p align="center" dir="ltr"><font size="5">σ(−1)=1/(1+e)≈0.27;</font></p>
+For sigmoid, a′(zⱼ)=σ(zⱼ)[1−σ(zⱼ)]. Therefore:
 
-for +1,
+<p align="center" dir="ltr"><font size="5">∂L/∂wᵢ = −2 Σⱼ eⱼ · σ(zⱼ)[1−σ(zⱼ)] · xⱼ,ᵢ</font></p>
 
-<p align="center" dir="ltr"><font size="5">σ(1)=1/(1+e<sup>−1</sup>)≈0.73;</font></p>
+<p align="center" dir="ltr"><font size="5">∂L/∂b = −2 Σⱼ eⱼ · σ(zⱼ)[1−σ(zⱼ)]</font></p>
 
-and for +2,
+**eⱼ** (current prediction error) × **σ(zⱼ)[1−σ(zⱼ)]** (local sigmoid slope) × **xⱼ,ᵢ** (input attached to weight wᵢ) × **weight-gradient contribution** (then sum over examples and multiply by −2)
 
-<p align="center" dir="ltr"><font size="5">σ(2)≈0.88.</font></p>
+This factorization is the important conceptual picture. A training example changes a particular weight strongly only when three things line up: there is error to correct, the activation has useful slope at that example, and the corresponding input coordinate carries that weight into the weighted sum.
 
-![Sigmoid classification boundary and data](../assets/images/lesson-04/en/lesson-04-12.png)
+## 11. The training loop is now the same for regression and classification
 
-*The same linear boundary remains, but the smooth activation changes how strongly points near and far from that boundary are scored.*
+Once we can differentiate the chosen activation, training becomes a repeated four-step cycle.
 
-![Classification table with sigmoid outputs](../assets/images/lesson-04/en/lesson-04-13.png)
+1. **Predict** — Compute each z and prediction ŷ.
 
-*The right-hand table is filled with sigmoid outputs such as 0.27, 0.73, and 0.88 for the six data points.*
+2. **Measure** — Compute residuals and the current loss L.
 
-The loss can still be formed from squared differences between the target values and these predictions. The immediate need, however, is the gradient, so the sigmoid itself must be differentiated.
+3. **Differentiate** — Compute one partial derivative for every weight and for the bias.
 
-## Derivative of the sigmoid
+4. **Update** — Move parameters by −η∇L, then return to step 1.
 
-Start from σ(x)=1/(1+e<sup>−x</sup>). Using the quotient rule, the derivative is
+> **What “learning” means here** The neuron does not invent a new computation each round. Its computation stays the same; the numerical values of the weights and bias are repeatedly adjusted so the loss becomes smaller.
 
-<p align="center" dir="ltr"><font size="5">dσ/dx = e<sup>−x</sup> / (1+e<sup>−x</sup>)².</font></p>
+## 12. More input dimensions only make the gradient longer
 
-This expression can be rearranged into a particularly useful form:
+The derivation did not depend on having exactly one regression input or exactly two classification inputs.
 
-<p align="center" dir="ltr"><font size="5">σ′(x) = σ(x)(1−σ(x)).</font></p>
+If an input vector has more coordinates, the neuron simply has more weights. Every weight gets its own partial derivative, and those derivatives are stacked into a larger gradient vector. The bias still contributes one additional component.
 
-The algebra for showing the equality is left as a check, but this identity is what makes the next gradient expression compact.
+![A neuron with n input coordinates and n weights feeding a weighted sum, followed by a gradient vector containing one partial derivative for each weight and the bias, then a gradient descent update.](../assets/images/lesson-04/en/lesson-04-08.svg)
 
-![Sigmoid outputs before differentiation](../assets/images/lesson-04/en/lesson-04-14.png)
+*Increasing the input dimension changes the *length* of the parameter and gradient vectors, not the training logic.*
 
-*The numerical sigmoid outputs are in place just before the derivative is derived.*
+With a linear activation, this is a gradient-trained linear regressor. With a sigmoid activation, it has the form of logistic regression. In this lesson both are trained with the same squared-error setup so the shared chain-rule structure stays visible.
 
-![Derivative of sigmoid on the whiteboard](../assets/images/lesson-04/en/lesson-04-15.png)
+## The central idea to carry forward
 
-*The quotient-rule derivative is written and identified with σ(x)(1−σ(x)).*
-
-## Gradient for the sigmoid classifier
-
-The same general squared-error derivative is used. Consider one weight first; the other weight and the bias follow the same pattern:
-
-<p align="center" dir="ltr"><font size="5">∂L/∂w<sub>i</sub> = −2 Σ<sub>j=1</sub><sup>N</sup> e<sub>j</sub> · ∂f(x⃗<sub>j</sub>)/∂w<sub>i</sub>.</font></p>
-
-Now f is the sigmoid applied to the weighted sum. Passing the chain rule through the sigmoid gives the sigmoid derivative evaluated at that weighted sum, multiplied by the derivative of the weighted sum. The latter is again just the corresponding input component x<sub>j,i</sub>.
-
-<p align="center" dir="ltr"><font size="5">∂L/∂w<sub>i</sub> = −2 Σ<sub>j=1</sub><sup>N</sup> e<sub>j</sub> σ(x<sub>j</sub>)(1−σ(x<sub>j</sub>)) x<sub>j,i</sub>.</font></p>
-
-![Beginning of sigmoid-classifier gradient derivation](../assets/images/lesson-04/en/lesson-04-16.png)
-
-*The classifier derivative begins with exactly the same error term and chain-rule structure used for regression.*
-
-![Completed partial derivative for classifier weight](../assets/images/lesson-04/en/lesson-04-17.png)
-
-*The finished expression multiplies each error by σ(x<sub>j</sub>)(1−σ(x<sub>j</sub>)) and the input component associated with the chosen weight.*
-
-For w<sub>1</sub>, use the first coordinate of each data point; for w<sub>2</sub>, use the second coordinate. For the bias, the weighted-sum derivative is 1, so the x<sub>j,i</sub> factor disappears. Putting the three partial derivatives together gives the gradient vector for (w<sub>1</sub>,w<sub>2</sub>,b).
-
-Again, the gradient points toward increasing loss. Subtract a small multiple of it from the current parameters, recompute the gradient using the updated weights and bias, take another step, and continue.
-
-![Final classifier gradient discussion](../assets/images/lesson-04/en/lesson-04-18.png)
-
-*The completed classification derivative remains on the board while the update process is tied back to the same gradient-descent loop used for regression.*
-
-## The same idea in higher dimensions
-
-Nothing essential in the derivation depends on having one regression input or two classification inputs. If the input has more coordinates, the neuron simply has more weights. The formula for each partial derivative stays the same; it is applied once for every weight to build the full gradient vector.
-
-For regression, this produces linear regression using a single neuron trained by gradient descent. For classification, replacing the step activation by a sigmoid produces logistic regression—again using only a single neuron and gradient descent.
-
-![Final whiteboard at end of lesson](../assets/images/lesson-04/en/lesson-04-19.png)
-
-*The final board contains the regression update, the loss-surface sketch, the sigmoid activation, its derivative, and the classifier-gradient formula side by side.*
+- A neuron first computes a weighted sum and an activation.
+- A loss converts prediction quality into one number.
+- The gradient tells how that loss changes with every trainable parameter.
+- Because the gradient points uphill, gradient descent moves in the opposite direction.
+- The activation function matters during training because its derivative becomes one link in the chain rule.
 
 ---
 

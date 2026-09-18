@@ -36,7 +36,7 @@ Lessons 01–03 include 19 SVG teaching diagrams:
 - 4 visuals for Lesson 02
 - 6 visuals for Lesson 03
 
-Lesson 04 includes whiteboard figures extracted from the reconstructed HTML pages.
+Lesson 04 includes SVG teaching diagrams extracted from the reconstructed HTML pages.
 
 ## Source videos
 

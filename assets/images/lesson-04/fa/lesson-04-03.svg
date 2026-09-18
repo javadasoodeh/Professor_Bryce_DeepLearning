@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="زنجیره وابستگی از پارامتر به z، سپس پیش‌بینی، باقیمانده، خطای مربعی و زیان کل، همراه با عامل‌های مشتق در قاعده زنجیره‌ای." role="img" viewBox="0 0 980 270"><style>
+text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#24344d}
+.mathtext{font-family:"Cambria Math","Times New Roman",serif}
+.axis{stroke:#64748b;stroke-width:1.4}
+.grid{stroke:#dfe6ef;stroke-width:1}
+.curve{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round}
+.curve2{fill:none;stroke:#0f9f8f;stroke-width:4;stroke-linecap:round}
+.curve3{fill:none;stroke:#c2415d;stroke-width:3.5;stroke-linecap:round}
+.softblue{fill:#eaf2ff}.softteal{fill:#e9f8f5}.softamber{fill:#fff5dd}.softrose{fill:#ffeef2}
+</style>
+
+<defs><marker id="arrc" markerHeight="9" markerWidth="9" orient="auto" refX="7" refY="4.5"><path d="M0,0 L9,4.5 L0,9 z" fill="#61758e"></path></marker></defs>
+<rect class="softblue" fill="#eaf2ff" height="72" rx="15" stroke="#b9d2f8" width="120" x="20" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="22" text-anchor="middle" x="80" y="108">wᵢ / b</text>
+<rect class="softteal" fill="#e9f8f5" height="72" rx="15" stroke="#b9e6dd" width="120" x="182" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="24" text-anchor="middle" x="242" y="117">zⱼ</text>
+<rect class="softblue" fill="#eaf2ff" height="72" rx="15" stroke="#b9d2f8" width="146" x="344" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="22" text-anchor="middle" x="417" y="117">ŷⱼ=a(zⱼ)</text>
+<rect class="softamber" fill="#fff5dd" height="72" rx="15" stroke="#efd59d" width="145" x="532" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="21" text-anchor="middle" x="604" y="117">eⱼ=yⱼ−ŷⱼ</text>
+<rect class="softrose" fill="#ffeef2" height="72" rx="15" stroke="#efc2cd" width="105" x="719" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="24" text-anchor="middle" x="771" y="117">eⱼ²</text>
+<rect fill="#f2efff" height="72" rx="15" stroke="#d5cafb" width="90" x="866" y="78"></rect><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="24" text-anchor="middle" x="911" y="118">L=Σ</text>
+<g marker-end="url(#arrc)" stroke="#61758e" stroke-width="2"><line x1="140" x2="177" y1="114" y2="114"></line><line x1="302" x2="339" y1="114" y2="114"></line><line x1="490" x2="527" y1="114" y2="114"></line><line x1="677" x2="714" y1="114" y2="114"></line><line x1="824" x2="861" y1="114" y2="114"></line></g>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="160" y="73">∂z/∂wᵢ=xⱼ,ᵢ</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="160" y="174">∂z/∂b=1</text>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="321" y="73">a′(zⱼ)</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="510" y="73">−1</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="699" y="73">2eⱼ</text><text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="15" text-anchor="middle" x="845" y="73">Σ</text>
+<path d="M80,196 C290,252 665,252 911,194" fill="none" marker-end="url(#arrc)" stroke="#2563eb" stroke-dasharray="8 7" stroke-width="3"></path>
+<text class="mathtext" font-family="Cambria Math, Times New Roman, serif" font-size="19" font-weight="700" text-anchor="middle" x="495" y="242">∂L/∂wᵢ = −2 Σ eⱼ a′(zⱼ) xⱼ,ᵢ</text>
+</svg>

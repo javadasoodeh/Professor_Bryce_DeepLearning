@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="plot-svg" viewBox="0 0 820 350" role="img" aria-label="Training and held-out points with a simpler red model and an overfit blue model">
+      <g><line x1="80" y1="80" x2="760" y2="80" stroke="#e6eaee" stroke-width="1"></line><line x1="80" y1="140" x2="760" y2="140" stroke="#e6eaee" stroke-width="1"></line><line x1="80" y1="200" x2="760" y2="200" stroke="#e6eaee" stroke-width="1"></line><line x1="80" y1="260" x2="760" y2="260" stroke="#e6eaee" stroke-width="1"></line></g>
+      <line x1="80" y1="300" x2="760" y2="300" stroke="#66717d" stroke-width="2"></line><line x1="80" y1="300" x2="80" y2="45" stroke="#66717d" stroke-width="2"></line>
+      <circle cx="120" cy="270" r="6" fill="#20252b"></circle><circle cx="185" cy="245" r="6" fill="#20252b"></circle><circle cx="255" cy="224" r="6" fill="#20252b"></circle><circle cx="325" cy="199" r="6" fill="#20252b"></circle><circle cx="410" cy="170" r="6" fill="#20252b"></circle><circle cx="495" cy="140" r="6" fill="#20252b"></circle><circle cx="585" cy="112" r="6" fill="#20252b"></circle><circle cx="675" cy="86" r="6" fill="#20252b"></circle><circle cx="365" cy="188" r="8" fill="#fff" stroke="#9a6500" stroke-width="4"></circle><circle cx="540" cy="126" r="8" fill="#fff" stroke="#9a6500" stroke-width="4"></circle>
+      <line x1="105" y1="284" x2="720" y2="72" stroke="#c74454" stroke-width="5"></line>
+      <path d="M105 282 C155 95, 205 320, 258 162 S360 280, 410 128 S505 280, 565 92 S655 25, 720 210" stroke="#2563a8" stroke-width="5" fill="none"></path>
+      <text x="740" y="318" font-size="17" fill="#4b5563">x</text><text x="58" y="55" font-size="17" fill="#4b5563">y</text>
+    </svg>

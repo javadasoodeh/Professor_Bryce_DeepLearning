@@ -11,7 +11,8 @@ A bilingual English/Persian study guide for Professor Bryce's **Deep Learning** 
 3. ✅ [What Can a Single Neuron Compute?](./en/03-what-can-a-single-neuron-compute.md)
 4. ✅ [How to Train Your Neuron](./en/04-how-to-train-your-neuron.md)
 5. ✅ [The Data Analysis Pipeline](./en/05-the-data-analysis-pipeline.md)
-6. ⏳ Lessons 06–26 are pending
+6. ✅ [Model Selection & Out-of-Sample Validation](./en/06-out-of-sample-validation.md)
+7. ⏳ Lessons 07–26 are pending
 
 [Open the full English outline →](./en/README.md)
 
@@ -22,13 +23,14 @@ A bilingual English/Persian study guide for Professor Bryce's **Deep Learning** 
 3. ✅ [یک نورون منفرد چه چیزی می‌تواند محاسبه کند؟](./fa/03-what-can-a-single-neuron-compute.md)
 4. ✅ [چگونه نورون خود را آموزش دهیم](./fa/04-how-to-train-your-neuron.md)
 5. ✅ [خط لولهٔ تحلیل داده](./fa/05-the-data-analysis-pipeline.md)
-6. ⏳ درس‌های ۰۶ تا ۲۶ در ادامه اضافه می‌شوند
+6. ✅ [انتخاب مدل و اعتبارسنجی خارج از نمونه](./fa/06-out-of-sample-validation.md)
+7. ⏳ درس‌های ۰۷ تا ۲۶ در ادامه اضافه می‌شوند
 
 [مشاهده فهرست کامل فارسی →](./fa/README.md)
 
-## Lessons 01–05
+## Lessons 01–06
 
-The first five lessons are available in both English and Persian, with the same equations, examples, section order, and tutorial diagrams in both languages.
+The first six lessons are available in both English and Persian, with the same equations, examples, section order, and tutorial diagrams in both languages.
 
 ## Visuals
 
@@ -38,7 +40,7 @@ Lessons 01–03 include 19 SVG teaching diagrams:
 - 4 visuals for Lesson 02
 - 6 visuals for Lesson 03
 
-Lessons 04–05 include SVG teaching diagrams extracted from the reconstructed HTML pages.
+Lessons 04–06 include SVG teaching diagrams extracted from the reconstructed HTML pages.
 
 ## Source videos
 
@@ -47,4 +49,5 @@ Lessons 04–05 include SVG teaching diagrams extracted from the reconstructed H
 - [03 — What can a single neuron compute?](https://www.youtube.com/watch?v=Irb-auR40iA)
 - [04 — How to train your neuron](https://www.youtube.com/watch?v=HU91yMSTU0Y)
 - [05 — The Data Analysis Pipeline](https://www.youtube.com/watch?v=Usl7m15bsT0)
+- [06 — Out-of-Sample Validation](https://www.youtube.com/watch?v=fBP0-OhOPz0)
 - [Professor Bryce Deep Learning playlist](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)

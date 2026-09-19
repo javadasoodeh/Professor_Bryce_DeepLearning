@@ -4,7 +4,7 @@
 
 **زبان:** فارسی · [English](../en/README.md) · [صفحه اصلی مخزن](../README.md)
 
-این صفحه فهرست فارسی دوره است. درس‌های ۰۱ تا ۰۵ کامل هستند. درس‌های بعدی پس از پردازش ویدیوهای منبع مربوطه فعال خواهند شد.
+این صفحه فهرست فارسی دوره است. درس‌های ۰۱ تا ۰۶ کامل هستند. درس‌های بعدی پس از پردازش ویدیوهای منبع مربوطه فعال خواهند شد.
 
 ## فهرست دوره
 
@@ -13,7 +13,7 @@
 3. ✅ [یک نورون منفرد چه چیزی می‌تواند محاسبه کند؟](./03-what-can-a-single-neuron-compute.md)
 4. ✅ [چگونه نورون خود را آموزش دهیم](./04-how-to-train-your-neuron.md)
 5. ✅ [خط لولهٔ تحلیل داده](./05-the-data-analysis-pipeline.md)
-6. ⏳ اعتبارسنجی خارج از نمونه
+6. ✅ [انتخاب مدل و اعتبارسنجی خارج از نمونه](./06-out-of-sample-validation.md)
 7. ⏳ شبکه‌های عصبی پیش‌خور
 8. ⏳ پس‌انتشار در شبکه عصبی
 9. ⏳ Softmax و Categorical Crossentropy
@@ -42,6 +42,7 @@
 - [۰۳ — What can a single neuron compute?](https://www.youtube.com/watch?v=Irb-auR40iA)
 - [۰۴ — How to train your neuron](https://www.youtube.com/watch?v=HU91yMSTU0Y)
 - [۰۵ — The Data Analysis Pipeline](https://www.youtube.com/watch?v=Usl7m15bsT0)
+- [۰۶ — Out-of-Sample Validation](https://www.youtube.com/watch?v=fBP0-OhOPz0)
 - [فهرست کامل ویدیوهای Deep Learning](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)
 
 نسخه‌های Markdown فرمت اصلی دوره هستند.

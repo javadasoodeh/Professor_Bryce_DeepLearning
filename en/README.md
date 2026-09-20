@@ -2,7 +2,7 @@
 
 **Language:** English · [فارسی](../fa/README.md) · [Repository home](../README.md)
 
-This is the English course outline. Lessons 01–06 are complete. Future lessons will be activated as their source videos are processed.
+This is the English course outline. Lessons 01–07 are complete. Future lessons will be activated as their source videos are processed.
 
 ## Course outline
 
@@ -12,7 +12,7 @@ This is the English course outline. Lessons 01–06 are complete. Future lessons
 4. ✅ [How to Train Your Neuron](./04-how-to-train-your-neuron.md)
 5. ✅ [The Data Analysis Pipeline](./05-the-data-analysis-pipeline.md)
 6. ✅ [Model Selection & Out-of-Sample Validation](./06-out-of-sample-validation.md)
-7. ⏳ Feed-Forward Neural Networks
+7. ✅ [Computing with Neural Networks](./07-feed-forward-neural-networks.md)
 8. ⏳ Neural Network Backpropagation
 9. ⏳ Softmax & Categorical Crossentropy
 10. ⏳ Vectorization
@@ -41,6 +41,7 @@ This is the English course outline. Lessons 01–06 are complete. Future lessons
 - [04 — How to train your neuron](https://www.youtube.com/watch?v=HU91yMSTU0Y)
 - [05 — The Data Analysis Pipeline](https://www.youtube.com/watch?v=Usl7m15bsT0)
 - [06 — Out-of-Sample Validation](https://www.youtube.com/watch?v=fBP0-OhOPz0)
+- [07 — Feed-Forward Neural Networks](https://www.youtube.com/watch?v=AsyPA69QBks)
 - [Full Deep Learning playlist](https://www.youtube.com/playlist?list=PLgPbN3w-ia_PeT1_c5jiLW3RJdR7853b9)
 
 The Markdown lessons are the primary course format.

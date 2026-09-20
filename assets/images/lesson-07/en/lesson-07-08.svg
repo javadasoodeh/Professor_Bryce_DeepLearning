@@ -1,0 +1,16 @@
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow" viewBox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#577385"></path></marker></defs><rect width="940" height="400" rx="18" fill="#fbfbf9"></rect>
+    <text class="label " x="235" y="48" text-anchor="middle" font-size="19">All-linear stack</text><text class="label " x="705" y="48" text-anchor="middle" font-size="19">With non-linearity</text>
+    <g transform="translate(55,82)"><rect width="360" height="220" rx="16" fill="#f6f8f8" stroke="#dde2e2"></rect>
+      <rect x="35" y="83" width="72" height="54" rx="10" fill="#fff" stroke="#668094"></rect><text x="71" y="115" text-anchor="middle">f₁</text><path class="flow" d="M108 110 L155 110"></path>
+      <rect x="165" y="83" width="72" height="54" rx="10" fill="#fff" stroke="#668094"></rect><text x="201" y="115" text-anchor="middle">f₂</text><path class="flow" d="M238 110 L285 110"></path>
+      <rect x="295" y="83" width="40" height="54" rx="10" fill="#fff" stroke="#668094"></rect><text x="315" y="115" text-anchor="middle">…</text>
+      <line x1="55" y1="188" x2="305" y2="152" stroke="#177a78" stroke-width="4"></line><text class="muted small " x="180" y="210" text-anchor="middle">still one straight mapping</text>
+    </g>
+    <g transform="translate(525,82)"><rect width="360" height="220" rx="16" fill="#f7f5fa" stroke="#e3dcea"></rect>
+      <rect x="35" y="83" width="72" height="54" rx="10" fill="#fff" stroke="#668094"></rect><text x="71" y="115" text-anchor="middle">f₁</text><path class="flow" d="M108 110 L155 110"></path>
+      <rect x="165" y="83" width="72" height="54" rx="10" fill="#fff" stroke="#72579a"></rect><text x="201" y="115" text-anchor="middle">σ</text><path class="flow" d="M238 110 L285 110"></path>
+      <rect x="295" y="83" width="40" height="54" rx="10" fill="#fff" stroke="#668094"></rect><text x="315" y="115" text-anchor="middle">…</text>
+      <path d="M55 190 C105 190 115 148 160 158 S230 207 305 145" fill="none" stroke="#72579a" stroke-width="4"></path><text class="muted small " x="180" y="215" text-anchor="middle">composition can bend the mapping</text>
+    </g>
+    <text x="470" y="350" text-anchor="middle" font-family="Cambria Math,serif" font-size="20">linear ∘ linear = linear</text>
+    </svg>

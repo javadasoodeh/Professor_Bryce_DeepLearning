@@ -1,0 +1,7 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" rx="18" fill="#fbfbf9"></rect>
+    <line x1="70" y1="210" x2="690" y2="210" class="axis"></line><line x1="380" y1="40" x2="380" y2="245" class="axis"></line>
+    <line x1="95" y1="200" x2="380" y2="200" class="curve2"></line><line x1="380" y1="85" x2="665" y2="85" class="curve2"></line>
+    <path d="M95 200 C215 198 300 180 345 135 C390 90 475 87 665 85" class="curve"></path>
+    <text x="650" y="72" class="small" fill="#b64a4a">step</text><text x="590" y="120" class="small" fill="#177a78">sigmoid</text><text x="380" y="266" text-anchor="middle" class="small muted">0</text><text x="55" y="90" class="small muted">1</text><text x="55" y="205" class="small muted">0</text>
+    <text class="label fa" x="380" y="30" text-anchor="middle" font-size="17">سیگموید تقریب نرمِ یک تابع پله‌ای است.</text>
+    </svg>
